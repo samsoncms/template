@@ -1,0 +1,25 @@
+{
+	"name":"samsoncms/template",
+    "description": "SamsonCMS base template",
+    "keywords": ["samsoncms template", "samsoncms structure"],
+    "authors":[
+        {
+            "name":"Vitaly Iegorov",
+            "email":"egorov@samsonos.com"
+        }
+    ],
+    "require": {
+        "samsonos/php_core": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.*"
+    },
+	"license":"Open Software License (OSL) v 3.0",
+	"homepage":"http://samsonos.com/",
+    "autoload" : {
+        "classmap": ["src/"],
+        "psr-4": {
+            "samsoncms\\": "src/"
+        }
+    }
+}
