@@ -1,0 +1,3 @@
+<section id="template-container">
+    <?php iv('template-container')?>
+</section>

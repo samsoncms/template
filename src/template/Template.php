@@ -7,20 +7,59 @@
  */
 namespace samsoncms\template;
 
+use samson\core\CompressableExternalModule;
+use samson\cms\App;
 use samsonphp\event\Event;
 
 /**
  * Base SamsonCMS template controller
  * @package samsoncms\template
  */
-class Template extends \samson\core\CompressableExternalModule
+class Template extends CompressableExternalModule
 {
-    /** Event when main page is started rendering */
+    /** Event when main page rendering has started */
     const E_MAIN_STARTED = 'template.main.started';
 
+    /** Event when main page rendering has finished */
+    const E_MAIN_RENDERED= 'template.main.rendered';
+
+    /** Event when #template-menu rendering has started */
+    const E_MENU_STARTED = 'template.menu.started';
+
+    /** Event when #template-menu rendering has finished */
+    const E_MENU_RENDERED = 'template.menu.rendered';
+
+    /** Event when #template-container rendering has started */
+    const E_CONTAINER_STARTED = 'template.container.started';
+
+    /** Event when #template-container rendering has finished */
+    const E_CONTAINER_RENDERED = 'template.container.rendered';
+
+
+    /** @var string Module identifier */
+    protected $id = 'template';
+
+
+    /** @returns CompressableExternalModule[] Get loaded SamsonCMS applications */
+    protected function applications()
+    {
+        $apps = array();
+
+        // Render application main page block
+        foreach (App::loaded() as $app) {
+            // Show only visible apps
+            if ($app->hide == false) {
+                $apps[] = $app;
+            }
+        }
+
+        return $apps;
+    }
+
     /**
-     * Universal controller action, this is SamsonCMS main page
-     * rendering entry point for #template-container block.
+     * Universal controller action, this is SamsonCMS page
+     * rendering entry point. Here we prepare #template-container and
+     * #template-menu blocks.
      */
     public function __handler()
     {
@@ -29,21 +68,56 @@ class Template extends \samson\core\CompressableExternalModule
 
         Event::fire(self::E_MAIN_STARTED, array(&$html));
 
-        // TODO: This should be removed in near future
-        // Render application main page block
-        foreach (App::loaded() as $app) {
-            // Show only visible apps
-            if ($app->hide == false) {
-                $html .= $app->main();
-            }
-        }
+        $html .= $this->oldMain();
+
+        Event::fire(self::E_MAIN_RENDERED, array(&$html));
 
         // Render view
-        m()	->view('index')
+        $this->view('index')
             ->title(t('Главная', true))
             ->set('mainPageActive', 'active')
+            ->set('template-menu', $menu)
             ->set('template-container', $html)
         ;
+    }
+
+    /** #template-container rendering controller action */
+    public function __container()
+    {
+        // HTML main #template-container
+        $html = '';
+
+        Event::fire(self::E_CONTAINER_STARTED, array(&$html));
+
+        Event::fire(self::E_CONTAINER_RENDERED, array(&$html));
+
+        // Prepare view
+        $this->view('container')->set('template-container', $html);
+    }
+
+    /** #template-menu rendering controller action */
+    public function __menu()
+    {
+        // HTML main #template-menu
+        $html = '';
+
+        Event::fire(self::E_MENU_STARTED, array(&$html));
+
+        Event::fire(self::E_MENU_RENDERED, array(&$html));
+
+        // Prepare view
+        $this->view('menu')->set('template-menu', $html);
+    }
+
+    /**
+     * @deprecated All application should draw main page block via events
+     */
+    protected function oldMain()
+    {
+        // Render application main page block
+        foreach ($this->applications() as $app) {
+            $html .= $app->main();
+        }
     }
 
     /** E404 controller action */
@@ -55,19 +129,19 @@ class Template extends \samson\core\CompressableExternalModule
     /* Menu controller action */
     function __menu()
     {
-        $result = '';
+        $html = '';
+
+        Event::fire(self::E_MENU_STARTED, array(&$html));
+
         // Iterate loaded samson\cms\application
-        foreach (App::loaded() as $app/*@var $app App*/) {
-            // If application is not hidden
-            if ($app->hide == false) {
-                // Render application menu item
-                $result .= m()
-                    ->view('menu/item')
-                    ->active( url()->module == $app->id() ? 'active' : '' )
-                    ->app( $app )
-                    ->name( isset($app->name{0}) ? $app->name : (isset($app->app_name{0})?$app->app_name:''))
-                    ->output();
-            }
+        foreach ($this->applications() as $app) {
+            // Render application menu item
+            $html .= m()
+                ->view('menu/item')
+                ->active(url()->module == $app->id() ? 'active' : '')
+                ->app($app)
+                ->name(isset($app->name{0}) ? $app->name : (isset($app->app_name{0})?$app->app_name:''))
+                ->output();
         }
 
         $subMenu = '';
@@ -83,10 +157,12 @@ class Template extends \samson\core\CompressableExternalModule
             }
         }
 
+        Event::fire(self::E_MENU_RENDERED, array(&$html));
+
         // Render menu view
         m()
             ->view('menu/index')
             ->submenu($subMenu)
-            ->items( $result);
+            ->items($html);
     }
 }
