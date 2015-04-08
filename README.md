@@ -1,4 +1,12 @@
 # SamsonCMS generic template module
+
+[![Latest Stable Version](https://poser.pugx.org/samsoncms/template/v/stable.svg)](https://packagist.org/packages/samsoncms/template)
+[![Build Status](https://scrutinizer-ci.com/g/samsoncms/template/badges/build.png?b=master)](https://scrutinizer-ci.com/g/samsoncms/template/build-status/master)
+[![Code Coverage](https://scrutinizer-ci.com/g/samsoncms/template/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/samsoncms/template/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/samsoncms/template/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/samsoncms/template/?branch=master) 
+[![Total Downloads](https://poser.pugx.org/samsoncms/template/downloads.svg)](https://packagist.org/packages/samsoncms/template)
+[![Stories in Ready](https://badge.waffle.io/samsoncms/template.png?label=ready&title=Ready)](https://waffle.io/samsoncms/template)
+
 This module is responsible for rendering base HTML template,
 its styles, icons and images. 
 
