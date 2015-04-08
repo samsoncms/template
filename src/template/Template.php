@@ -57,11 +57,10 @@ class Template extends CompressableExternalModule
     }
 
     /**
-     * Universal controller action, this is SamsonCMS page
-     * rendering entry point. Here we prepare #template-container and
-     * #template-menu blocks.
+     * Template main page rendering
+     * @param string $html #template-container content for rendering
      */
-    public function __handler()
+    public function mainPage(&$html)
     {
         // HTML main #template-container
         $html = '';
@@ -71,14 +70,20 @@ class Template extends CompressableExternalModule
         $html .= $this->oldMain();
 
         Event::fire(self::E_MAIN_RENDERED, array(&$html));
+    }
 
-        // Render view
-        $this->view('index')
-            ->title(t('Главная', true))
-            ->set('mainPageActive', 'active')
-            ->set('template-menu', $menu)
-            ->set('template-container', $html)
-        ;
+
+    /**
+     * Universal controller action, this is SamsonCMS main page
+     * rendering.
+     */
+    public function __handler()
+    {
+        // Subscribe for rendering #template-container
+        Event::subscribe(self::E_CONTAINER_STARTED, array($this, 'mainPage'));
+
+        // Prepare view
+        $this->view('index')->title(t('Главная', true));
     }
 
     /** #template-container rendering controller action */
@@ -110,7 +115,7 @@ class Template extends CompressableExternalModule
         Event::fire(self::E_MENU_RENDERED, array(&$html));
 
         // Prepare view
-        $this->view('menu')->set('template-menu', $html)->set('submenu', array_shift($menu));
+        $this->view('menu/index')->set('template-menu', $html)->set('submenu', array_shift($menu));
     }
 
     /**
