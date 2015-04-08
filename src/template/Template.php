@@ -103,36 +103,6 @@ class Template extends CompressableExternalModule
 
         Event::fire(self::E_MENU_STARTED, array(&$html));
 
-        Event::fire(self::E_MENU_RENDERED, array(&$html));
-
-        // Prepare view
-        $this->view('menu')->set('template-menu', $html);
-    }
-
-    /**
-     * @deprecated All application should draw main page block via events
-     */
-    protected function oldMain()
-    {
-        // Render application main page block
-        foreach ($this->applications() as $app) {
-            $html .= $app->main();
-        }
-    }
-
-    /** E404 controller action */
-    function __e404()
-    {
-        $this->view('e404')->title(t('Страница не найдена', true));
-    }
-
-    /* Menu controller action */
-    function __menu()
-    {
-        $html = '';
-
-        Event::fire(self::E_MENU_STARTED, array(&$html));
-
         // Iterate loaded samson\cms\application
         foreach ($this->applications() as $app) {
             // Render application menu item
@@ -159,10 +129,24 @@ class Template extends CompressableExternalModule
 
         Event::fire(self::E_MENU_RENDERED, array(&$html));
 
-        // Render menu view
-        m()
-            ->view('menu/index')
-            ->submenu($subMenu)
-            ->items($html);
+        // Prepare view
+        $this->view('menu')->set('template-menu', $html);
+    }
+
+    /**
+     * @deprecated All application should draw main page block via events
+     */
+    protected function oldMain()
+    {
+        // Render application main page block
+        foreach ($this->applications() as $app) {
+            $html .= $app->main();
+        }
+    }
+
+    /** E404 controller action */
+    function __e404()
+    {
+        $this->view('e404')->title(t('Страница не найдена', true));
     }
 }
