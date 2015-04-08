@@ -22,7 +22,7 @@ This base SamsonCMS template structure can be defined as next:
 All structure blocks have Events(http://github.com/samsonphp/event), and all
 their filling and rendering should be done via this events.
 
-### Left menu events
+### Menu events
 #### Menu created event - ```template.menu.created```
 This event fires before generic menu rendering process has started.
 
@@ -36,6 +36,11 @@ This event fires before container rendering process has started.
 #### Container rendered event - ```template.container.rendered```
 This event fires when container has been rendered into main container.
 
-#### 
+### Main page events
+#### Main page created event - ```template.main.created```
+This event fires before main page rendering process has started.
+
+#### Main page rendered event - ```template.main.rendered```
+This event fires when main page has been rendered into main container.
 
 
