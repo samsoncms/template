@@ -39,23 +39,6 @@ class Template extends CompressableExternalModule
     /** @var string Module identifier */
     protected $id = 'template';
 
-
-    /** @returns CompressableExternalModule[] Get loaded SamsonCMS applications */
-    protected function applications()
-    {
-        $apps = array();
-
-        // Render application main page block
-        foreach (App::loaded() as $app) {
-            // Show only visible apps
-            if ($app->hide == false) {
-                $apps[] = $app;
-            }
-        }
-
-        return $apps;
-    }
-
     /**
      * Template main page rendering
      * @param string $html #template-container content for rendering
@@ -71,7 +54,6 @@ class Template extends CompressableExternalModule
 
         Event::fire(self::E_MAIN_RENDERED, array(&$html));
     }
-
 
     /**
      * Universal controller action, this is SamsonCMS main page
@@ -121,6 +103,31 @@ class Template extends CompressableExternalModule
             ->set('submenu', array_shift($menu));
     }
 
+    /** E404 controller action */
+    function __e404()
+    {
+        $this->view('e404')->title(t('Страница не найдена', true));
+    }
+
+    /**
+     * @deprecated
+     * @returns CompressableExternalModule[] Get loaded SamsonCMS applications
+     */
+    protected function applications()
+    {
+        $apps = array();
+
+        // Render application main page block
+        foreach (App::loaded() as $app) {
+            // Show only visible apps
+            if ($app->hide == false) {
+                $apps[] = $app;
+            }
+        }
+
+        return $apps;
+    }
+
     /**
      * @deprecated All application should draw main page block via events
      */
@@ -168,11 +175,5 @@ class Template extends CompressableExternalModule
         }
 
         return array($html, $subMenu);
-    }
-
-    /** E404 controller action */
-    function __e404()
-    {
-        $this->view('e404')->title(t('Страница не найдена', true));
     }
 }
