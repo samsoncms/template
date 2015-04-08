@@ -115,7 +115,10 @@ class Template extends CompressableExternalModule
         Event::fire(self::E_MENU_RENDERED, array(&$html));
 
         // Prepare view
-        $this->view('menu/index')->set('template-menu', $html)->set('submenu', array_shift($menu));
+        $this->view('menu/index')
+            ->set('mainPageActive', $_SERVER['REQUEST_URI'] == '/' ? 'active' : '')
+            ->set('template-menu', $html)
+            ->set('submenu', array_shift($menu));
     }
 
     /**
