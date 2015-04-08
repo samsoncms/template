@@ -101,7 +101,39 @@ class Template extends CompressableExternalModule
         // HTML main #template-menu
         $html = '';
 
+        $menu = $this->oldMenu();
+
         Event::fire(self::E_MENU_STARTED, array(&$html));
+
+        $html = array_shift($menu);
+
+        Event::fire(self::E_MENU_RENDERED, array(&$html));
+
+        // Prepare view
+        $this->view('menu')->set('template-menu', $html)->set('submenu', array_shift($menu));
+    }
+
+    /**
+     * @deprecated All application should draw main page block via events
+     */
+    protected function oldMain()
+    {
+        $html = '';
+
+        // Render application main page block
+        foreach ($this->applications() as $app) {
+            $html .= $app->main();
+        }
+
+        return $html;
+    }
+
+    /**
+     * @deprecated All application should draw menu block via events
+     */
+    protected function oldMenu()
+    {
+        $html = '';
 
         // Iterate loaded samson\cms\application
         foreach ($this->applications() as $app) {
@@ -127,21 +159,7 @@ class Template extends CompressableExternalModule
             }
         }
 
-        Event::fire(self::E_MENU_RENDERED, array(&$html));
-
-        // Prepare view
-        $this->view('menu')->set('template-menu', $html);
-    }
-
-    /**
-     * @deprecated All application should draw main page block via events
-     */
-    protected function oldMain()
-    {
-        // Render application main page block
-        foreach ($this->applications() as $app) {
-            $html .= $app->main();
-        }
+        return array($html, $subMenu);
     }
 
     /** E404 controller action */
