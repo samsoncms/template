@@ -1,5 +1,0 @@
-<header id="template-menu">
-    <nav>
-        <?php iv('template-menu')?>
-    </nav>
-</header>
