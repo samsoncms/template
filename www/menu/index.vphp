@@ -18,7 +18,7 @@
                 <div class="logo"></div>
             <?php endif?>
 
-            <a href="<?php url_base('signin','logout')?>" class="icon2 icon_logout" title="<?php t('Выход')?>">.</a>
+            <a href="<?php url_base('signin','logout')?>" class="icon2 icon_logout" title="<?php t('Выход')?>"></a>
         </div>
     </nav>
 
