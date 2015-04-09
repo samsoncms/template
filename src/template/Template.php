@@ -98,7 +98,8 @@ class Template extends CompressableExternalModule
 
         // Prepare view
         $this->view('menu/index')
-            ->set('mainPageActive', $_SERVER['REQUEST_URI'] == '/' ? 'active' : '')
+            // TODO: Remove samson\core\Core dependency
+            ->set('module', s()->active()->id())
             ->set('template-menu', $html)
             ->set('submenu', array_shift($menu));
     }
