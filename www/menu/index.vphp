@@ -12,10 +12,12 @@
         </ul>
 
         <div class="r_b">
-            <?php if(defined('__SAMSONCMS_LOGO')):?>
+            <?php m('i18n')->render('list')?>
+
+            <?php if(isv('logo')):?>
                 <div class="logo"></div>
             <?php endif?>
-            <?php m('i18n')->render('list')?>
+
             <a href="<?php url_base('signin','logout')?>" class="logout" title="<?php t('Выход')?>">.</a>
         </div>
     </nav>

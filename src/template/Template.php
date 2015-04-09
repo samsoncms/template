@@ -35,6 +35,9 @@ class Template extends CompressableExternalModule
     /** Event when #template-container rendering has finished */
     const E_CONTAINER_RENDERED = 'template.container.rendered';
 
+    /** @var bool Flag to show SamsonCMS logo in menu */
+    public $showMenuLogo = true;
+
 
     /** @var string Module identifier */
     protected $id = 'template';
@@ -100,6 +103,7 @@ class Template extends CompressableExternalModule
         $this->view('menu/index')
             // TODO: Remove samson\core\Core dependency
             ->set('module', s()->active()->id())
+            ->set('logo', $this->showMenuLogo)
             ->set('template-menu', $html)
             ->set('submenu', array_shift($menu));
     }
