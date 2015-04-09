@@ -1,7 +1,4 @@
 header {
-	@menu_height:32px; // height of main_menu 
-	@sub_menu_height:30px; // height of sub_menu
-	@menu_text_height:29px; // height of class text
 	
 	.gradient( #83EF51, #65C836);
 
@@ -11,7 +8,7 @@ header {
       .main_menu {
           display:inline-block;
           height:@menu_height;
-          padding-left:20px;
+          padding-left:@menu_left_padding;
 
           >.icons {
               display:inline-block;
@@ -61,7 +58,7 @@ header {
                   &:hover {background:rgba(0,0,0,0.2);}
 
                   &.active {
-                      font-weight:bold;
+                      font-weight:500;
                       color:black;
                       background-color:#F1F1F1;
                       box-shadow:1px -1px 2px rgba(0,0,0,0.2), -1px -1px 2px rgba(0,0,0,0.2);
@@ -98,47 +95,5 @@ header {
         &:hover {background:url('../menu/img/header_logout_hover.png') no-repeat center;}
       }
     }
-  }
-
-  .sub_menu_wrapper{
-
-      .gradient( #F1F1F1, #D1D1D1);
-      border-bottom:1px solid #999999;
-      min-height:6px;
-
-      >.sub_menu{
-          display:table;
-          height:@sub_menu_height;
-          padding-left:20px;
-
-          >li{
-              display:inline-block;
-              height:inherit;
-              padding:3px 5px;
-
-              >.sub_menu_a{
-                  display:table-cell;
-                  height:100%;
-                  padding: 5px 10px;
-                  border:1px solid transparent;
-                  border-radius:5px;
-
-                  &:hover,
-                  &.active {
-                      border:1px solid #b6b6b6;
-                      background-color:#e7e7e7;
-                  }
-
-                  >.icon{
-                      display:inline-block;
-                      width:16px;
-                      height:16px;
-                      color:rgba(0,0,0,0);
-                      margin-right:5px;
-                      background-repeat:no-repeat;
-                  }
-              }
-          }
-      }
   }
 }
