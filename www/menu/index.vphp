@@ -2,12 +2,12 @@
 
     <nav>
         <ul class="template-menu-list">
-            <li class="icons">
-                <a class="to_main <?php isnv('module', 'active') ?>" href="<?php url_base()?>" title="<?php t('На главную')?>">.</a>
+            <li class="icons text">
+                <a class="icon2 icon_main <?php isnv('module', 'active') ?>" href="<?php url_base()?>" title="<?php t('На главную')?>"></a>
             </li><li class="icons">
-                <a class="to_site" href="<?php url_base('/..');?>" title="<?php t('Открыть сайт')?>" target="_blank">.</a>
+                <a class="icon2 icon_site" href="<?php url_base('/..');?>" title="<?php t('Открыть сайт')?>" target="_blank">.</a>
             </li><li class="icons" style="display: none">
-                <a class="edit_site" href="<?php url_base('control', 'editor')?>" title="<?php t('Редактировать сайт')?>">.</a>
+                <a class="icon2 icon_edit_site" href="<?php url_base('control', 'editor')?>" title="<?php t('Редактировать сайт')?>"></a>
             </li><?php iv('template-menu')?>
         </ul>
 

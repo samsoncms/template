@@ -1,0 +1,39 @@
+.icon2 {
+  display: block;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  cursor:pointer;
+
+  &.left { background-position: 0% 50%; }
+  &.icon_16x16 	{ min-width:18px; min-height:18px; line-height:18px; }
+
+  &.icon-edit {
+    background-image: url(../icons/img/edit.png);
+    &.hover, &:hover { background-image: url(../icons/img/edit_hover.png); }
+    &.active, &:active { background-image: url(../icons/img/edit_active.png); }
+  }
+
+  &.icon-delete {
+    background-image: url(../icons/img/delete.png);
+    &.hover, &:hover { background-image: url(../icons/img/delete_hover.png); }
+    &.active, &:active { background-image: url(../icons/img/delete_active.png); }
+  }
+
+  &.icon_main {
+    background-image:url('../icons/img/header_home.png');
+    &.hover, &:hover { background-image: url(../icons/img/header_home_hover.png); }
+    &.active, &:active  { background-image: url(../icons/img/header_home_hover.png);}
+  }
+
+  &.icon_site {
+    background-image:url('../icons/img/header_site.png');
+    &.hover, &:hover { background-image: url(../icons/img/header_site_hover.png); }
+    &.active, &:active { background-image: url(../icons/img/header_site_hover.png); }
+  }
+
+  &.icon_edit_site {
+    background-image:url('../icons/img/header_edit.png');
+    &.hover, &:hover { background-image: url(../icons/img/header_site_hover.png); }
+    &.active, &:active { background-image: url(../icons/img/header_site_hover.png); }
+  }
+}
