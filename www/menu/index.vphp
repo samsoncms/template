@@ -27,7 +27,7 @@
             <ul class="sub_menu">
                 <?php iv('submenu');?>
             </ul>
-        <?php endif;?>
+        <?php endif?>
     </div>
 
 </header>
