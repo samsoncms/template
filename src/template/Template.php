@@ -29,11 +29,12 @@ class Template extends CompressableExternalModule
     /** Event when #template-menu rendering has finished */
     const E_MENU_RENDERED = 'template.menu.rendered';
 
-    /** Event when #template-container rendering has started */
-    const E_CONTAINER_STARTED = 'template.container.started';
+    /** Event when #e404 rendering has started */
+    const E_E404_STARTED = 'template.e404.started';
 
-    /** Event when #template-container rendering has finished */
-    const E_CONTAINER_RENDERED = 'template.container.rendered';
+    /** Event when #e404 rendering has finished */
+    const E_E404_RENDERED = 'template.e404.rendered';
+
 
     /** @var bool Flag to show SamsonCMS logo in menu */
     public $showMenuLogo = true;
@@ -66,20 +67,6 @@ class Template extends CompressableExternalModule
             ->set('template-container', $html);
     }
 
-    /** #template-container rendering controller action */
-    public function __container()
-    {
-        // HTML main #template-container
-        $html = '';
-
-        Event::fire(self::E_CONTAINER_STARTED, array(&$html));
-
-        Event::fire(self::E_CONTAINER_RENDERED, array(&$html));
-
-        // Prepare view
-        $this->view('container')->set('template-container', $html);
-    }
-
     /** #template-menu rendering controller action */
     public function __menu()
     {
@@ -106,7 +93,15 @@ class Template extends CompressableExternalModule
     /** E404 controller action */
     function __e404()
     {
-        $this->view('e404')->title(t('Страница не найдена', true));
+        // HTML main #template-container
+        $html = '';
+
+        Event::fire(self::E_E404_STARTED, array(&$html));
+        Event::fire(self::E_E404_RENDERED, array(&$html));
+
+        $this->view('e404')
+            ->title(t('Страница не найдена', true))
+            ->set('template-container', $html);
     }
 
     /**
