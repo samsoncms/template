@@ -1,80 +1,77 @@
 header {
-	
-	.gradient( #83EF51, #65C836);
+  .gradient(#83EF51, #65C836);
 
-    nav {
-      position: relative;
+  nav {
+    position: relative;
 
-      .template-menu-list {
+    .template-menu-list {
+      display: inline-block;
+      height: @menu_height;
+      padding-left: @menu_left_padding;
+
+      > .icons {
         display: inline-block;
-        height: @menu_height;
-        padding-left: @menu_left_padding;
+        width: @menu_height;
 
-        > .icons {
-          display: inline-block;
-          height: @menu_height;
-          width: @menu_height !important;
-
-          > a {
-            display: block;
-            width: inherit;
-            height: inherit;
-            color: rgba(0, 0, 0, 0);
-          }
-        }
-
-        > .text {
-          display: inline-block;
-          height: @menu_text_height;
-          width: auto;
-          vertical-align: bottom;
-          margin-right: 10px;
-
-          > a {
-            display: block;
-            padding: 0px 7px;
-            line-height: @menu_text_height;
-            color: white;
-            border-radius: 3px 3px 0 0;
-
-            &:hover {
-              background: rgba(0, 0, 0, 0.2);
-            }
-
-            &.active {
-              font-weight: 500;
-              color: black;
-              background-color: #F1F1F1;
-              box-shadow: 1px -1px 2px rgba(0, 0, 0, 0.2), -1px -1px 2px rgba(0, 0, 0, 0.2);
-            }
-          }
+        > a {
+          display: block;
+          width: inherit;
+          height: inherit;
         }
       }
 
-      .r_b {
-        display: block;
-        position: absolute;
-        right: 0px;
-        top: 0px;
-        height: @menu_height;
+      > .text {
+        display: inline-block;
+        height: @menu_text_height;
+        vertical-align: bottom;
+        margin-right: @padding / 2;
+        margin-top: @menu_top_padding;
 
-        > .logo {
-          display: inline-block;
-          width: 132px;
-          height: inherit;
-          vertical-align: middle;
-          margin-left: 20px;
-          background: url('../menu/img/logo.png') no-repeat center;
-        }
+        > a {
+          display: block;
+          padding: 0px 7px;
+          line-height: @menu_text_height;
+          color: white;
+          border-radius: 3px 3px 0 0;
 
-        > .icon_logout {
-          display: inline-block;
-          width: @menu_height;
-          height: @menu_height;
-          vertical-align: top;
-          border-left: 1px solid white;
-          margin-left: 20px;
+          &:hover {
+            background-color: rgba(0, 0, 0, 0.2);
+          }
+
+          &.active {
+            font-weight: 500;
+            color: black;
+            background-color: #F1F1F1;
+            box-shadow: 1px -1px 2px rgba(0, 0, 0, 0.2), -1px -1px 2px rgba(0, 0, 0, 0.2);
+          }
         }
       }
     }
+
+    .r_b {
+      display: block;
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      height: @menu_height;
+
+      > .logo {
+        display: inline-block;
+        width: 132px;
+        height: inherit;
+        vertical-align: middle;
+        margin-left: @padding;
+        background: url('../menu/img/logo.png') no-repeat center;
+      }
+
+      > .icon_logout {
+        display: inline-block;
+        width: @menu_height;
+        height: @menu_height;
+        vertical-align: top;
+        border-left: 1px solid white;
+        margin-left: 20px;
+      }
+    }
+  }
 }

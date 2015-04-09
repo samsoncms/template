@@ -4,8 +4,8 @@
         <ul class="template-menu-list">
             <li class="icons text">
                 <a class="icon2 icon_main <?php isnv('module', 'active') ?>" href="<?php url_base()?>" title="<?php t('На главную')?>"></a>
-            </li><li class="icons">
-                <a class="icon2 icon_site" href="<?php url_base('/..');?>" title="<?php t('Открыть сайт')?>" target="_blank">.</a>
+            </li><li class="icons text">
+                <a class="icon2 icon_site" href="<?php url_base('/..');?>" title="<?php t('Открыть сайт')?>" target="_blank"></a>
             </li><li class="icons" style="display: none">
                 <a class="icon2 icon_edit_site" href="<?php url_base('control', 'editor')?>" title="<?php t('Редактировать сайт')?>"></a>
             </li><?php iv('template-menu')?>
