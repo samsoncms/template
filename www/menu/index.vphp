@@ -1,9 +1,9 @@
 <header id="template-menu">
 
     <nav>
-        <ul class="main_menu">
+        <ul class="template-menu-list">
             <li class="icons">
-                <a class="to_main <?php isval('module', 'template', 'active') ?>" href="<?php url_base()?>" title="<?php t('На главную')?>">.</a>
+                <a class="to_main <?php isnv('module', 'active') ?>" href="<?php url_base()?>" title="<?php t('На главную')?>">.</a>
             </li><li class="icons">
                 <a class="to_site" href="<?php url_base('/..');?>" title="<?php t('Открыть сайт')?>" target="_blank">.</a>
             </li><li class="icons" style="display: none">

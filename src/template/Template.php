@@ -43,32 +43,27 @@ class Template extends CompressableExternalModule
     protected $id = 'template';
 
     /**
-     * Template main page rendering
-     * @param string $html #template-container content for rendering
+     * Universal controller action, this is SamsonCMS main page
+     * rendering.
      */
-    public function mainPage(&$html)
+    public function __handler()
     {
         // HTML main #template-container
         $html = '';
 
         Event::fire(self::E_MAIN_STARTED, array(&$html));
 
-        $html .= $this->oldMain();
+        // Render application main page block
+        foreach ($this->applications() as $app) {
+            $html .= $app->main();
+        }
 
         Event::fire(self::E_MAIN_RENDERED, array(&$html));
-    }
-
-    /**
-     * Universal controller action, this is SamsonCMS main page
-     * rendering.
-     */
-    public function __handler()
-    {
-        // Subscribe for rendering #template-container
-        Event::subscribe(self::E_CONTAINER_STARTED, array($this, 'mainPage'));
 
         // Prepare view
-        $this->view('index')->title(t('Главная', true));
+        $this->view('container')
+            ->title(t('Главная', true))
+            ->set('template-container', $html);
     }
 
     /** #template-container rendering controller action */
@@ -102,7 +97,7 @@ class Template extends CompressableExternalModule
         // Prepare view
         $this->view('menu/index')
             // TODO: Remove samson\core\Core dependency
-            ->set('module', s()->active()->id())
+            ->set('module', url()->module)
             ->set('logo', $this->showMenuLogo)
             ->set('template-menu', $html)
             ->set('submenu', array_shift($menu));
@@ -131,21 +126,6 @@ class Template extends CompressableExternalModule
         }
 
         return $apps;
-    }
-
-    /**
-     * @deprecated All application should draw main page block via events
-     */
-    protected function oldMain()
-    {
-        $html = '';
-
-        // Render application main page block
-        foreach ($this->applications() as $app) {
-            $html .= $app->main();
-        }
-
-        return $html;
     }
 
     /**
