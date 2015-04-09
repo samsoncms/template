@@ -53,12 +53,6 @@ class Template extends CompressableExternalModule
         $html = '';
 
         Event::fire(self::E_MAIN_STARTED, array(&$html));
-
-        // Render application main page block
-        foreach ($this->applications() as $app) {
-            $html .= $app->main();
-        }
-
         Event::fire(self::E_MAIN_RENDERED, array(&$html));
 
         // Prepare view
@@ -72,14 +66,10 @@ class Template extends CompressableExternalModule
     {
         // HTML main #template-menu
         $html = '';
+        $submenu = '';
 
-        $menu = $this->oldMenu();
-
-        Event::fire(self::E_MENU_STARTED, array(&$html));
-
-        $html = array_shift($menu);
-
-        Event::fire(self::E_MENU_RENDERED, array(&$html));
+        Event::fire(self::E_MENU_STARTED, array(&$html, &$submenu));
+        Event::fire(self::E_MENU_RENDERED, array(&$html, &$submenu));
 
         // Prepare view
         $this->view('menu/index')
@@ -87,7 +77,7 @@ class Template extends CompressableExternalModule
             ->set('module', url()->module)
             ->set('logo', $this->showMenuLogo)
             ->set('template-menu', $html)
-            ->set('submenu', array_shift($menu));
+            ->set('submenu', $submenu);
     }
 
     /** E404 controller action */
@@ -102,58 +92,5 @@ class Template extends CompressableExternalModule
         $this->view('e404')
             ->title(t('Страница не найдена', true))
             ->set('template-container', $html);
-    }
-
-    /**
-     * @deprecated
-     * @returns CompressableExternalModule[] Get loaded SamsonCMS applications
-     */
-    protected function applications()
-    {
-        $apps = array();
-
-        // Render application main page block
-        foreach (App::loaded() as $app) {
-            // Show only visible apps
-            if ($app->hide == false) {
-                $apps[] = $app;
-            }
-        }
-
-        return $apps;
-    }
-
-    /**
-     * @deprecated All application should draw menu block via events
-     */
-    protected function oldMenu()
-    {
-        $html = '';
-
-        // Iterate loaded samson\cms\application
-        foreach ($this->applications() as $app) {
-            // Render application menu item
-            $html .= m()
-                ->view('menu/item')
-                ->active(url()->module == $app->id() ? 'active' : '')
-                ->app($app)
-                ->name(isset($app->name{0}) ? $app->name : (isset($app->app_name{0})?$app->app_name:''))
-                ->output();
-        }
-
-        $subMenu = '';
-
-        // Find current SamsonCMS application
-        if (App::find(url()->module, $app/*@var $app App*/)) {
-            // Render main-menu application sub-menu
-            $subMenu = $app->submenu();
-
-            // If module has sub_menu view - render it
-            if ($app->findView('sub_menu')) {
-                $subMenu .= $app->view('sub_menu')->output();
-            }
-        }
-
-        return array($html, $subMenu);
     }
 }
