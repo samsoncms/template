@@ -1,15 +1,14 @@
 .template-form-btn	{
   cursor:pointer;
   float:right;
-  background:#EEE;
+  background:@block-color;
   border:1px solid @border-color;
   padding:8px 10px;
   margin:0px 3px -3px 0px;
   text-decoration: none;
-  font-weight:bold;
 
   &:first-child { margin-right: 0px; }
 
-  &.hover,&:hover { background-color:#fbfbfb }
+  &.hover,&:hover { background-color:darken(@block-color,10); }
   &.active,&:active	{ box-shadow:inset 0px 0px 5px #CCC; }
 }
