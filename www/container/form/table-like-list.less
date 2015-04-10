@@ -1,0 +1,48 @@
+.table-like-list {
+  width:100%;
+  display:block;
+  background-image:none !important;
+  margin:0px 0px 0px 0px !important;
+
+  & > li {
+    width:100%;
+    margin:0px 0px 5px 0px !important;
+    padding: 0px 0px 0px 0px !important;
+    background:none !important;
+    min-height: 30px;
+
+    & > label {
+      display:block;
+      width:100%;
+    }
+
+    & > textarea,
+    & > input,
+    & >  select {
+      max-width:100%;
+      min-height: 18px;
+      font-weight: bold;
+      padding:5px 5px;
+    }
+  }
+
+  .input-text {
+    border:1px solid #999;
+    background-color:white;
+    padding:5px 5px;
+
+    &.disabled, &.disabled input {
+      background-color: #C2C2C2;
+    }
+
+    input, textarea {
+      display: block;
+      width:100%;
+      padding:0;
+      border:0;
+    }
+  }
+}
+
+
+
