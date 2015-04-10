@@ -1,24 +1,30 @@
 /* Header part of the content */
 .top {
-	
-	width:100%;	
-	padding: @padding - 4px @padding;
-	
-	/* Main heading */
-	h1 { 
-		float:left;
-		font-size: 18px;
-		margin:0 0px 0 0px; 
-		height:28px;
-		line-height: 28px;
-		
-		&.with-arrow {
-			&:before { content:"⇒"; display:block; float:left; margin:0 10px;  }
-		}
-		
-		/* Header icon */
-		.icon2{
-			margin-right:@padding/2;
-		} 
-	}		
+
+  width: 100%;
+  padding: @padding - 4px @padding;
+
+  /* Main heading */
+  h1 {
+    float: left;
+    font-size: 18px;
+    margin: 0 0px 0 0px;
+    height: 28px;
+    line-height: 28px;
+    text-transform: capitalize;
+
+    &.with-arrow {
+      &:before {
+        content: "⇒";
+        display: block;
+        float: left;
+        margin: 0 10px;
+      }
+    }
+
+    /* Header icon */
+    .icon2 {
+      margin-right: @padding/2;
+    }
+  }
 }
