@@ -8,5 +8,8 @@ s('.template-menu').pageInit(function(menu){
     // Bind menu collapser
     var collapserBtn = s('.template-menu-collapse', menu).click(function(collapserBtn){
         menu.toggleClass('expanded');
+        setTimeout(function(){
+            menu.toggleClass('finished');
+        },300);
     });
 });

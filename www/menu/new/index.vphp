@@ -15,17 +15,15 @@
                     <span><?php t('Открыть сайт')?></span>
                 </a>
             </li><?php iv('template-menu')?>
+            <li class="text">
+                <a class="<?php isnv('module', 'active') ?>" href="<?php url_base('signin','logout')?>" title="<?php t('Выход')?>">
+                    <i class="fa fa-sign-out"></i>
+                    <span><?php t('Выход')?></span>
+                </a>
+            </li>
         </ul>
 
-        <div class="r_b">
-            <?php m('i18n')->render('list')?>
-
-            <?php if(isv('logo')):?>
-                <div class="logo"></div>
-            <?php endif?>
-
-            <a href="<?php url_base('signin','logout')?>" class="icon2 icon_logout" title="<?php t('Выход')?>"></a>
-        </div>
+        <?php m('i18n')->render('list')?>
     </nav>
 
 </div>
