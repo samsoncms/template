@@ -14,14 +14,18 @@
       height:inherit;
       padding:3px 5px 3px 0px;
 
+      &:active {box-shadow:inset 1px 1px 4px 1px rgba(0,0,0,0.2);}
+
       &:first-child { padding-left:0px; }
 
       >.sub_menu_a{
         display:table-cell;
         height:100%;
-        padding: 5px 10px;
+        padding: 4px 10px;
         border:1px solid transparent;
         border-radius:5px;
+        vertical-align: middle;
+
 
         &:hover,
         &.active {
@@ -31,8 +35,10 @@
 
         >.icon{
           display:inline-block;
-          width:16px;
-          height:16px;
+          margin-top: -3px;
+          width:18px;
+          height:18px;
+          vertical-align: middle;
           color:rgba(0,0,0,0);
           margin-right:5px;
           background-repeat:no-repeat;
