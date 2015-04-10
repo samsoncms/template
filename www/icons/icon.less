@@ -1,22 +1,24 @@
 .icon2 {
-  display: block;
   background-repeat: no-repeat;
   background-position: 50% 50%;
   cursor:pointer;
+
 
   &.icon-left { background-position: 0% 50%; }
   &.icon_16x16 	{ min-width:18px; min-height:18px; line-height:18px; }
 
   &.icon-edit {
+    &:before { content: @fa-var-pencil; }/*
     background-image: url(../icons/img/edit.png);
     &.hover, &:hover { background-image: url(../icons/img/edit_hover.png); }
-    &.active, &:active { background-image: url(../icons/img/edit_active.png); }
+    &.active, &:active { background-image: url(../icons/img/edit_active.png); }*/
   }
 
   &.icon-delete {
+    &:before { content: @fa-var-trash-o; }/*
     background-image: url(../icons/img/delete.png);
     &.hover, &:hover { background-image: url(../icons/img/delete_hover.png); }
-    &.active, &:active { background-image: url(../icons/img/delete_active.png); }
+    &.active, &:active { background-image: url(../icons/img/delete_active.png); }*/
   }
 
   &.icon_main {
@@ -50,9 +52,10 @@
   }
 
   &.icon-material {
+    &:before { content: @fa-var-book; }/*
     background-image:url('../icons/img/materials.png');
     &.hover, &:hover { background-image: url(../icons/img/materials.png); }
-    &.active, &:active { background-image: url(../icons/img/materials.png); }
+    &.active, &:active { background-image: url(../icons/img/materials.png); }*/
   }
 
   &.icon-draft {
