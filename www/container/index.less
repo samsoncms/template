@@ -1,0 +1,13 @@
+#template-container, .template-container {
+  position: absolute;
+  left:@menu-collapsed-width;
+  top:0px;
+  right:0px;
+  bottom:0px;
+
+  .transition(left,0.3s,0.1s);
+
+  &.collapsed {
+    left:@menu-full-width;
+  }
+}
