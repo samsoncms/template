@@ -8,21 +8,30 @@
   padding: @menu-padding;
   z-index:2;
 
-  .transition(width, 0.3s, 0.1s);
+  .transition(width, @animation-duration, @animation-wait);
 
-  &.expanded {
+  &.expanded/*, &:hover*/ {
     width: @menu-full-width;
 
     .template-menu-collapse {
       right:20px;
+      &:before { content: @fa-var-times; }
     }
 
-    nav {
-      text-align: left;
+    &.finished {
+      nav {
+        text-align: left;
 
-      a {
-        span { display: inline-block; }
+        a {
+          span {
+            display: inline-block;
+          }
+        }
       }
+    }
+
+    & + #template-container, & + .template-container {
+      left:@menu-full-width;
     }
   }
 
@@ -34,8 +43,9 @@
     position:absolute;
     right:50%;
     margin-right:-10px;
+    &:before { content: @fa-var-bars; }
 
-    .transition(right, 0.3s, 0.2s);
+    .transition(right, @animation-duration, @animation-wait);
   }
 
   nav {
