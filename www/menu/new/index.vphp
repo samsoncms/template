@@ -1,0 +1,31 @@
+<div class="template-menu">
+
+    <i class="fa fa-bars template-menu-collapse"></i>
+
+    <nav>
+        <ul class="template-menu-list">
+            <li class="text">
+                <a class="<?php isnv('module', 'active') ?>" href="<?php url_base()?>" title="<?php t('На главную')?>">
+                    <i class="fa fa-home"></i>
+                    <span><?php t('Главная')?></span>
+                </a>
+            </li><li class="text">
+                <a class="" href="<?php url_base('/..');?>" title="<?php t('Открыть сайт')?>" target="_blank">
+                    <i class="fa fa-globe"></i>
+                    <span><?php t('Открыть сайт')?></span>
+                </a>
+            </li><?php iv('template-menu')?>
+        </ul>
+
+        <div class="r_b">
+            <?php m('i18n')->render('list')?>
+
+            <?php if(isv('logo')):?>
+                <div class="logo"></div>
+            <?php endif?>
+
+            <a href="<?php url_base('signin','logout')?>" class="icon2 icon_logout" title="<?php t('Выход')?>"></a>
+        </div>
+    </nav>
+
+</div>
