@@ -48,12 +48,16 @@
     color:@menu-color;
     font-size: @menu-icon-fontsize;
     text-align: center;
+    height:@menu-item-height;
     cursor:pointer;
     width:100%;
     vertical-align: middle;
     background-repeat: no-repeat;
     background-position: 2000% 50%;
     vertical-align: top;
+
+    /* Try to make lines */
+    margin-top:@menu-fixer;
 
     &:after {  content: @fa-var-bars; }
 
@@ -67,8 +71,10 @@
   }
 
   nav {
-    margin-top:@padding * 1.5 + 8px;
     text-align: center;
+
+    /* Try to make lines */
+    margin-top:2*@menu-fixer;
 
     li {
       height:@menu-item-height;
