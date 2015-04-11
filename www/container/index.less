@@ -4,10 +4,9 @@
   top:0px;
   right:0px;
   bottom:0px;
+  padding: @padding;
 
   .transition(left, @animation-duration, @animation-wait);
 
-  &.collapsed {
-    left:@menu-full-width;
-  }
+  &.collapsed { left:@menu-full-width; }
 }

@@ -53,22 +53,17 @@
     vertical-align: middle;
     background-repeat: no-repeat;
     background-position: 2000% 50%;
+    vertical-align: top;
 
-
-    &:after {
-      float:right;
-      content: @fa-var-bars;
-    }
+    &:after {  content: @fa-var-bars; }
 
     img {
       position:absolute;
       top:-10*@padding;
       .opacity(0);
 
-
       .transition(opacity, @animation-duration, 0);
     }
-
   }
 
   nav {
