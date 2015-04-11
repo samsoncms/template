@@ -155,4 +155,6 @@ function templateList(table, pager, asyncCompleteHandler) {
 }
 
 // Bind list logic
-s('.table2').pageInit(templateList);
+s('.table2').pageInit(function(table){
+    templateList(table, s('.table-pager'));
+});
