@@ -1,14 +1,13 @@
-<div class="template-menu">
+<section class="template-menu">
 
     <i class="icon2 template-menu-collapse">
         <?php if(isv('logo')):?>
-            <li class="logo"></li>
+            <img class="logo" src="<?php src($logo)?>">
         <?php endif?>
     </i>
 
     <nav>
         <ul class="template-menu-list">
-
             <li class="text">
                 <a class="<?php isnv('module', 'active') ?>" href="<?php url_base()?>" title="<?php t('На главную')?>">
                     <i class="icon2 icon2-home"></i>
@@ -31,4 +30,4 @@
         <?php m('i18n')->render('list')?>
     </nav>
 
-</div>
+</section>

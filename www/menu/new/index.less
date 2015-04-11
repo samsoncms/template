@@ -13,16 +13,15 @@
   &.expanded/*, &:hover*/ {
     width: @menu-full-width;
 
-    .template-menu-collapse {
-      right:20px;
-      &:after { content: @fa-var-times; }
-    }
-
     &.finished {
-      .logo {
-        .opacity(1);
-        position: static;
-        margin-top:-3px;
+      .template-menu-collapse {
+        background-position: 0% 50%;
+        &:after { content: @fa-var-times; }
+
+        img {
+          position:static;
+          .opacity(1);
+        }
       }
 
       nav {
@@ -50,32 +49,26 @@
     font-size: @menu-icon-fontsize;
     text-align: center;
     cursor:pointer;
-    position:absolute;
-    right:50%;
-    margin-right:-10px;
+    width:100%;
     vertical-align: middle;
+    background-repeat: no-repeat;
+    background-position: 2000% 50%;
+
 
     &:after {
-      display: inline-block;
+      float:right;
       content: @fa-var-bars;
     }
 
-    .transition(right, @animation-duration, @animation-wait);
-
-    .logo {
-      width: 162px;
-      height: 13px;
-      display: inline-block;
-      vertical-align: middle;
-      position: absolute;
-      margin-top: -100px;
-
+    img {
+      position:absolute;
+      top:-10*@padding;
       .opacity(0);
-      .transition(opacity, @animation-duration, 0s);
 
 
-      background: url('../menu/img/logo_w.png') no-repeat 50% 50%;
+      .transition(opacity, @animation-duration, 0);
     }
+
   }
 
   nav {

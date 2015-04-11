@@ -37,7 +37,7 @@ class Template extends CompressableExternalModule
 
 
     /** @var bool Flag to show SamsonCMS logo in menu */
-    public $showMenuLogo = true;
+    public $menuLogo = 'www/menu/img/logo_w.png';
 
 
     /** @var string Module identifier */
@@ -75,7 +75,7 @@ class Template extends CompressableExternalModule
         $this->view('menu/new/index')
             // TODO: Remove samson\core\Core dependency
             ->set('module', url()->module)
-            ->set('logo', $this->showMenuLogo)
+            ->set('logo', $this->menuLogo)
             ->set('template-menu', $html)
             ->set('submenu', $submenu);
     }
