@@ -9,18 +9,18 @@
     <nav>
         <ul class="template-menu-list">
             <li class="text">
-                <a class="<?php isnv('module', 'active') ?>" href="<?php url_base()?>" title="<?php t('На главную')?>">
+                <a class="item <?php isnv('module', 'active') ?>" href="<?php url_base()?>" title="<?php t('На главную')?>">
                     <i class="icon2 icon2-home"></i>
                     <span><?php t('Главная')?></span>
                 </a>
             </li><li class="text">
-                <a class="" href="<?php url_base('/..');?>" title="<?php t('Открыть сайт')?>" target="_blank">
+                <a class="item" href="<?php url_base('/..');?>" title="<?php t('Открыть сайт')?>" target="_blank">
                     <i class="icon2 icon2-globe"></i>
                     <span><?php t('Открыть сайт')?></span>
                 </a>
             </li><?php iv('template-menu')?>
             <li class="text">
-                <a class="<?php isnv('module', 'active') ?>" href="<?php url_base('signin','logout')?>" title="<?php t('Выход')?>">
+                <a class="item <?php isnv('module', 'active') ?>" href="<?php url_base('signin','logout')?>" title="<?php t('Выход')?>">
                     <i class="icon2 icon2-sign-out"></i>
                     <span><?php t('Выход')?></span>
                 </a>

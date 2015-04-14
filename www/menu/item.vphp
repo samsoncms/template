@@ -1,6 +1,17 @@
 <li class="text">
-    <a <?php if(isv('active')):?>class="active"<?php endif;?> href="<?php url_base( $id )?>" title="<?php iv('name')?>">
-        <?php if(isv('icon')):?><i class="icon icon2 icon2-<?php iv('icon')?>"></i><?php endif?>
+    <?php if(isv('active')):?>
+    <div class="item active">
+        <?php if(isv('icon')):?>
+            <i class="icon icon2 icon2-<?php iv('icon')?>"></i>
+        <?php endif?>
+        <span><?php t($name);?></span>
+    </div>
+    <?php else:?>
+    <a class="item" href="<?php url_base( $id )?>" title="<?php iv('name')?>">
+        <?php if(isv('icon')):?>
+            <i class="icon icon2 icon2-<?php iv('icon')?>"></i>
+        <?php endif?>
         <span><?php t($name);?></span>
     </a>
+    <?php endif ?>
 </li>
