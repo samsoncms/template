@@ -52,8 +52,8 @@ class Template extends CompressableExternalModule
         // HTML main #template-container
         $html = '';
 
-        Event::fire(self::E_MAIN_STARTED, array(&$html));
-        Event::fire(self::E_MAIN_RENDERED, array(&$html));
+        Event::fire('template.main.started', array(&$html));
+        Event::fire('template.main.rendered', array(&$html));
 
         // Prepare view
         $this->view('container')
@@ -68,8 +68,8 @@ class Template extends CompressableExternalModule
         $html = '';
         $submenu = '';
 
-        Event::fire(self::E_MENU_STARTED, array(&$html, &$submenu));
-        Event::fire(self::E_MENU_RENDERED, array(&$html, &$submenu));
+        Event::fire('template.menu.started', array(&$html, &$submenu));
+        Event::fire('template.menu.rendered', array(&$html, &$submenu));
 
         // Prepare view
         $this->view('menu/new/index')
@@ -86,8 +86,8 @@ class Template extends CompressableExternalModule
         // HTML main #template-container
         $html = '';
 
-        Event::fire(self::E_E404_STARTED, array(&$html));
-        Event::fire(self::E_E404_RENDERED, array(&$html));
+        Event::fire('template.e404.started', array(&$html));
+        Event::fire('template.e404.rendered', array(&$html));
 
         $this->view('e404')
             ->title(t('Страница не найдена', true))
