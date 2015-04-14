@@ -5,114 +5,42 @@
   top:0px;
   bottom:0px;
   width: @menu-collapsed-width;
-  z-index:2;
+  z-index:3;
 
-  .transition(width, @animation-duration, @animation-wait);
-
-  &.expanded/*, &:hover*/ {
-    width: @menu-full-width;
-    -webkit-box-shadow: inset -9px 0px 4px 0px rgba(50, 50, 50, 0.29);
-    -moz-box-shadow:    inset -9px 0px 4px 0px rgba(50, 50, 50, 0.29);
-    box-shadow:         inset -9px 0px 4px 0px rgba(50, 50, 50, 0.29);
-
-    &.finished {
-      .template-menu-collapse {
-        background-position: 0% 50%;
-        &:after { content: @fa-var-times; }
-
-        img {
-          position:static;
-          .opacity(1);
-        }
-      }
-
-      nav {
-        text-align: left;
-
-        .text {
-
-          .item {
-            padding-left:@padding;
-            cursor: pointer;
-            width: 100%;
-
-            span {
-              display: inline-block;
-            }
-          }
-        }
-      }
-
-      .i18n-list {
-        display: block;
-      }
-    }
-
-    & + #template-container, & + .template-container {
-      left:@menu-full-width;
-    }
-  }
-
-  .template-menu-collapse {
-    color:@menu-color;
-    font-size: @menu-icon-fontsize;
+  .template-menu-list {
     text-align: center;
-    cursor:pointer;
-    background-repeat: no-repeat;
-    background-position: 2000% 50%;
-
-    position:absolute;
-    top:0px;
-    left:0px;
-    right:0px;
-    height:3*@padding;
-    line-height:3*@padding + 2*@menu-fixer;
-
-    &:after {  content: @fa-var-bars; }
-
-    img {
-      position:absolute;
-      top:-10*@padding;
-      .opacity(0);
-
-      .transition(opacity, @animation-duration, 0);
-    }
-  }
-
-  nav {
-    text-align: center;
+    position:relative;
+    z-index: 4;
 
     /* Try to make lines */
-    margin-top:3*@padding - 0.5*@menu-fixer;
+    margin-top:@padding;
 
     .text {
       margin-bottom: @padding / 2;
 
+      .opacity(0.7);
+
       &:active, &.active {
-        background-color: white;
-        .item {
-          color:black;
-        }
+        .opacity(1);
+      }
+
+      &:hover, &.hover  {
+        .opacity(0.85);
       }
       
       .item {
         color: @menu-color;
         display:block;
-        height: @menu-item-height;
-        line-height: @menu-item-height;
-
-        &:hover {
-          i {.opacity(0.8);}
-          span {.opacity(0.8);}
-        }
 
         i {
           font-size: @menu-icon-fontsize;
           min-width: 1.5*@padding;
           vertical-align: middle;
         }
+
         span {
-          display: none;
+          display:block;
+          font-size: @menu-text-size;
           vertical-align: middle;
         }
       }
