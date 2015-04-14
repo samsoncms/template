@@ -17,6 +17,7 @@
 
   &.collapsed {
     width:@sub-menu-collapsed-width;
+    &:hover {.opacity(0.9);}
 
     li {
       display:none;
@@ -40,16 +41,24 @@
     height:@menu-item-height;
     line-height:@menu-item-height;
     margin-bottom:@padding/2;
+    overflow: hidden;
+    a {.opacity(0.7);}
 
-    &:hover {
-      a {.opacity(0.9);}
+    &:hover, &.hover {
+      a {.opacity(0.8);}
+    }
+
+    &:active, &.active {
+      a {.opacity(1);}
     }
 
     &.collapser {
       color:white;
       text-align: center;
       font-size:29px;
+
       &:before { content:"\f100";}
+      &:hover {.opacity(0.8);}
     }
 
     a {

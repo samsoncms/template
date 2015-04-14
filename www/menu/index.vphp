@@ -13,8 +13,8 @@
                     <span><?php t('Открыть сайт')?></span>
                 </a>
             </li><?php iv('template-menu')?>
-            <li class="text">
-                <a class="item <?php isnv('module', 'active') ?>" href="<?php url_base('signin','logout')?>" title="<?php t('Выход')?>">
+            <li class="text sign-out">
+                <a class="item" href="<?php url_base('signin','logout')?>" title="<?php t('Выход')?>">
                     <i class="icon2 icon2-sign-out"></i>
                     <span><?php t('Выход')?></span>
                 </a>
