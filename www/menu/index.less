@@ -5,7 +5,6 @@
   top:0px;
   bottom:0px;
   width: @menu-collapsed-width;
-  padding: @menu-padding;
   z-index:2;
 
   .transition(width, @animation-duration, @animation-wait);
@@ -30,9 +29,16 @@
       nav {
         text-align: left;
 
-        .item {
-          span {
-            display: inline-block;
+        .text {
+
+          .item {
+            padding-left:@padding;
+            cursor: pointer;
+            width: 100%;
+
+            span {
+              display: inline-block;
+            }
           }
         }
       }
@@ -77,13 +83,23 @@
     text-align: center;
 
     /* Try to make lines */
-    margin-top:2*@padding - 0.5*@menu-fixer;
+    margin-top:3*@padding - 0.5*@menu-fixer;
 
-    li {
-      height:@menu-item-height;
+    .text {
+      margin-bottom: @padding / 2;
 
+      &:active, &.active {
+        background-color: white;
+        .item {
+          color:black;
+        }
+      }
+      
       .item {
         color: @menu-color;
+        display:block;
+        height: @menu-item-height;
+        line-height: @menu-item-height;
 
         &:hover {
           i {.opacity(0.8);}
@@ -93,9 +109,11 @@
         i {
           font-size: @menu-icon-fontsize;
           min-width: 1.5*@padding;
+          vertical-align: middle;
         }
         span {
           display: none;
+          vertical-align: middle;
         }
       }
     }

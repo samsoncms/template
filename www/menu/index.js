@@ -6,7 +6,7 @@ s('.template-menu').pageInit(function(menu){
     var container = s('#template-container');
 
     // Bind menu collapser
-    var collapserBtn = s('.template-menu-collapse', menu).click(function(collapserBtn){
+    var collapserBtn = s('.template-menu-collapse, .text.active', menu).click(function(collapserBtn){
         menu.toggleClass('expanded');
         setTimeout(function(){
             menu.toggleClass('finished');
