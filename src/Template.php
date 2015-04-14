@@ -72,7 +72,7 @@ class Template extends CompressableExternalModule
         Event::fire('template.menu.rendered', array(&$html, &$submenu));
 
         // Prepare view
-        $this->view('menu/new/index')
+        $this->view('menu/index')
             // TODO: Remove samson\core\Core dependency
             ->set('module', url()->module)
             ->set('logo', $this->menuLogo)

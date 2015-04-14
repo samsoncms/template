@@ -1,77 +1,105 @@
-header {
-  .gradient(#83EF51, #65C836);
+.template-menu {
+  background-color: @menu-bg-color;
+  position:fixed;
+  left:0px;
+  top:0px;
+  bottom:0px;
+  width: @menu-collapsed-width;
+  padding: @menu-padding;
+  z-index:2;
+
+  .transition(width, @animation-duration, @animation-wait);
+
+  &.expanded/*, &:hover*/ {
+    width: @menu-full-width;
+
+    &.finished {
+      .template-menu-collapse {
+        background-position: 0% 50%;
+        &:after { content: @fa-var-times; }
+
+        img {
+          position:static;
+          .opacity(1);
+        }
+      }
+
+      nav {
+        text-align: left;
+
+        a {
+          span {
+            display: inline-block;
+          }
+        }
+      }
+
+      .i18n-list {
+        display: block;
+      }
+    }
+
+    & + #template-container, & + .template-container {
+      left:@menu-full-width;
+    }
+  }
+
+  .template-menu-collapse {
+    color:@menu-color;
+    font-size: @menu-icon-fontsize;
+    text-align: center;
+    cursor:pointer;
+    background-repeat: no-repeat;
+    background-position: 2000% 50%;
+
+    position:absolute;
+    top:0px;
+    left:0px;
+    right:0px;
+    height:3*@padding;
+    line-height:3*@padding + 2*@menu-fixer;
+
+    &:after {  content: @fa-var-bars; }
+
+    img {
+      position:absolute;
+      top:-10*@padding;
+      .opacity(0);
+
+      .transition(opacity, @animation-duration, 0);
+    }
+  }
 
   nav {
-    position: relative;
+    text-align: center;
 
-    .template-menu-list {
-      display: inline-block;
-      height: @menu_height;
-      padding-left: @menu_left_padding;
+    /* Try to make lines */
+    margin-top:2*@padding ;
 
-      > .icons {
-        display: inline-block;
-        width: @menu_height;
+    li {
+      height:@menu-item-height;
 
-        > a {
-          display: block;
-          width: inherit;
-          height: inherit;
+      a {
+        color: @menu-color;
+        text-align: center;
+
+        &:hover {
+          i {.opacity(0.8);}
+          span {.opacity(0.8);}
         }
-      }
 
-      > .text {
-        display: inline-block;
-        height: @menu_text_height;
-        vertical-align: bottom;
-        margin-right: @padding / 2;
-        margin-top: @menu_top_padding;
-
-        > a {
-          display: block;
-          padding: 0px 7px;
-          line-height: @menu_text_height;
-          color: white;
-          border-radius: 3px 3px 0 0;
-
-          &:hover {
-            background-color: rgba(0, 0, 0, 0.2);
-          }
-
-          &.active {
-            font-weight: 500;
-            color: black;
-            background-color: #F1F1F1;
-            box-shadow: 1px -1px 2px rgba(0, 0, 0, 0.2), -1px -1px 2px rgba(0, 0, 0, 0.2);
-          }
+        i {
+          font-size: @menu-icon-fontsize;
+          min-width: 1.5*@padding;
+        }
+        span {
+          display: none;
         }
       }
     }
+  }
 
-    .r_b {
-      display: block;
-      position: absolute;
-      right: 0px;
-      top: 0px;
-      height: @menu_height;
-
-      > .logo {
-        display: inline-block;
-        width: 132px;
-        height: inherit;
-        vertical-align: middle;
-        margin-left: @padding;
-        background: url('../menu/img/logo.png') no-repeat center;
-      }
-
-      > .icon_logout {
-        display: inline-block;
-        width: @menu_height;
-        height: @menu_height;
-        vertical-align: top;
-        border-left: 1px solid white;
-        margin-left: 20px;
-      }
-    }
+  .i18n-list {
+    display: none;
   }
 }

@@ -1,33 +1,33 @@
-<header id="template-menu">
+<section class="template-menu">
+
+    <i class="icon2 template-menu-collapse">
+        <?php if(isv('logo')):?>
+            <img class="logo" src="<?php src($logo)?>">
+        <?php endif?>
+    </i>
 
     <nav>
         <ul class="template-menu-list">
-            <li class="icons text">
-                <a class="icon2 icon_main <?php isnv('module', 'active') ?>" href="<?php url_base()?>" title="<?php t('На главную')?>"></a>
-            </li><li class="icons text">
-                <a class="icon2 icon_site" href="<?php url_base('/..');?>" title="<?php t('Открыть сайт')?>" target="_blank"></a>
-            </li><li class="icons" style="display: none">
-                <a class="icon2 icon_edit_site" href="<?php url_base('control', 'editor')?>" title="<?php t('Редактировать сайт')?>"></a>
+            <li class="text">
+                <a class="<?php isnv('module', 'active') ?>" href="<?php url_base()?>" title="<?php t('На главную')?>">
+                    <i class="icon2 icon2-home"></i>
+                    <span><?php t('Главная')?></span>
+                </a>
+            </li><li class="text">
+                <a class="" href="<?php url_base('/..');?>" title="<?php t('Открыть сайт')?>" target="_blank">
+                    <i class="icon2 icon2-globe"></i>
+                    <span><?php t('Открыть сайт')?></span>
+                </a>
             </li><?php iv('template-menu')?>
+            <li class="text">
+                <a class="<?php isnv('module', 'active') ?>" href="<?php url_base('signin','logout')?>" title="<?php t('Выход')?>">
+                    <i class="icon2 icon2-sign-out"></i>
+                    <span><?php t('Выход')?></span>
+                </a>
+            </li>
         </ul>
 
-        <div class="r_b">
-            <?php m('i18n')->render('list')?>
-
-            <?php if(isv('logo')):?>
-                <div class="logo"></div>
-            <?php endif?>
-
-            <a href="<?php url_base('signin','logout')?>" class="icon2 icon_logout" title="<?php t('Выход')?>"></a>
-        </div>
+        <?php m('i18n')->render('list')?>
     </nav>
 
-    <div class="sub_menu_wrapper <?php isv('submenu','control')?>">
-        <?php if(isv('submenu')):?>
-            <ul class="sub_menu">
-                <?php iv('submenu');?>
-            </ul>
-        <?php endif?>
-    </div>
-
-</header>
+</section>
