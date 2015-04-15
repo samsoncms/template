@@ -3,59 +3,35 @@
   background-position: 50% 50%;
   cursor:pointer;
 
-
   &.icon-left { background-position: 0% 50%; }
   &.icon_16x16 	{ min-width:18px; min-height:18px; line-height:18px; }
 
   &.icon-edit {
-    &:before { content: @fa-var-pencil; }/*
-    background-image: url(../icons/img/edit.png);
-    &.hover, &:hover { background-image: url(../icons/img/edit_hover.png); }
-    &.active, &:active { background-image: url(../icons/img/edit_active.png); }*/
+    &:before { content: @fa-var-pencil; }
   }
 
   &.icon-delete {
-    &:before { content: @fa-var-trash-o; }/*
-    background-image: url(../icons/img/delete.png);
-    &.hover, &:hover { background-image: url(../icons/img/delete_hover.png); }
-    &.active, &:active { background-image: url(../icons/img/delete_active.png); }*/
+    &:before { content: @fa-var-trash-o; }
   }
 
-  &.icon_main {
-    background-image:url('../icons/img/header_home.png');
-    &.hover, &:hover { background-image: url(../icons/img/header_home_hover.png); }
-    &.active, &:active  { background-image: url(../icons/img/header_home_hover.png);}
+  &.icon-main {
+    &:before { content: @fa-var-home; }
   }
 
-  &.icon_site {
-    background-image:url('../icons/img/header_site.png');
-    &.hover, &:hover { background-image: url(../icons/img/header_site_hover.png); }
-    &.active, &:active { background-image: url(../icons/img/header_site_hover.png); }
+  &.icon-site {
+    &:before { content: @fa-var-globe; }
   }
 
-  &.icon_edit_site {
-    background-image:url('../icons/img/header_edit.png');
-    &.hover, &:hover { background-image: url(../icons/img/header_site_hover.png); }
-    &.active, &:active { background-image: url(../icons/img/header_site_hover.png); }
+  &.icon-logout {
+    &:before { content: @fa-var-sign-out; }
   }
 
-  &.icon_logout {
-    background-image:url('../icons/img/header_logout.png');
-    &.hover, &:hover { background-image: url(../icons/img/header_logout_hover.png); }
-    &.active, &:active { background-image: url(../icons/img/header_logout_hover.png); }
-  }
-
-  &.icon_search {
-    background-image:url('../icons/img/search.png');
-    &.hover, &:hover { background-image: url(../icons/img/search.png); }
-    &.active, &:active { background-image: url(../icons/img/search.png); }
+  &.icon-search {
+    &:before { content: @fa-var-search; }
   }
 
   &.icon-material {
-    &:before { content: @fa-var-book; }/*
-    background-image:url('../icons/img/materials.png');
-    &.hover, &:hover { background-image: url(../icons/img/materials.png); }
-    &.active, &:active { background-image: url(../icons/img/materials.png); }*/
+    &:before { content: @fa-var-book; }
   }
 
   &.icon-user {
@@ -66,28 +42,19 @@
     &:before { content: @fa-var-cubes; }
   }
 
-
   &.icon-draft {
-    background-image:url('../icons/img/draft.png');
-    &.hover, &:hover { background-image: url(../icons/img/draft.png); }
-    &.active, &:active { background-image: url(../icons/img/draft.png); }
+    &:before { content: @fa-var-file-o; }
   }
 
   &.icon-copy-material {
-    background-image:url('../icons/img/material_copy.png');
-    &.hover, &:hover { background-image: url(../icons/img/material_copy_hover.png); }
-    &.active, &:active { background-image: url(../icons/img/material_copy_active.png); }
+    content: @fa-var-file-o;
   }
 
   &.icon-add-material {
-    background-image:url('../icons/img/material_add.png');
-    &.hover, &:hover { background-image: url(../icons/img/material_add_hover.png); }
-    &.active, &:active { background-image: url(../icons/img/material_add_active.png); }
+    content: @fa-var-plus;
   }
 
   &.icon-delete-material {
-    background-image:url('../icons/img/material_delete.png');
-    &.hover, &:hover { background-image: url(../icons/img/material_delete_hover.png); }
-    &.active, &:active { background-image: url(../icons/img/material_delete_active.png); }
+    content: @fa-var-trash-o;
   }
 }

@@ -12,16 +12,15 @@
                     <i class="icon2 icon-site"></i>
                     <span><?php t('Открыть сайт')?></span>
                 </a>
-            </li><?php iv('template-menu')?>
-            <li class="text sign-out">
+            </li><?php iv('template-menu')?><li class="text sign-out">
                 <a class="item" href="<?php url_base('signin','logout')?>" title="<?php t('Выход')?>">
                     <i class="icon2 icon-logout"></i>
                     <span><?php t('Выход')?></span>
                 </a>
+            </li><li class="i18n">
+                <?php m('i18n')->render('list')?>
             </li>
         </ul>
-
-        <?php m('i18n')->render('list')?>
     </nav>
 
 </section>
