@@ -1,0 +1,34 @@
+.template-block {
+  position: relative;
+  margin-bottom: @padding;
+  background-color: @block-bg-color;
+  color: @theme-color;
+  border-radius: @block-border-radius;
+  display:inline-block;
+
+  .box-shadow(0 1px 3px 0 rgba(0, 0, 0, 0.33));
+
+  .template-block-header {
+    padding:@padding/2 @padding @padding/2 @padding;
+
+    .icon2 {
+      font-size:@block-icon-font-size;
+    }
+
+    .template-block-header-title {
+      float:left;
+      font-size: @block-header-font-size;
+    }
+
+    .template-block-header-controls {
+      float:right;
+      min-width:2*@padding;
+      line-height: @padding+13px;
+      text-align: right;
+    }
+  }
+
+  .template-block-content {
+    padding:0 @padding @padding @padding;
+  }
+}

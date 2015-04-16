@@ -6,7 +6,7 @@
   bottom:0px;
   width: @sub-menu-width;
   z-index:2;
-  padding-top: @padding;
+  padding: 1.5*@padding 0 @padding 0;
 
   .transition(left, @animation-duration);
   .transition(width, @animation-duration);
@@ -25,6 +25,7 @@
       &.collapser {
         display: block;
         height:100%;
+        font-size:29px;
         
         &:before { content:"\f101";}
       }
@@ -42,6 +43,7 @@
     line-height:@menu-item-height;
     margin-bottom:@padding/2;
     overflow: hidden;
+
     a {.opacity(0.7);}
 
     &:hover, &.hover {
@@ -55,7 +57,10 @@
     &.collapser {
       color:white;
       text-align: center;
-      font-size:29px;
+      font-size:19px;
+      position:absolute;
+      top:0px;
+
       .opacity(0.7);
 
       &:before { content:"\f100";}
