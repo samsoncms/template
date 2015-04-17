@@ -1,5 +1,5 @@
 <?php iv('template-container')?>
-<div class="template-block">
+<div class="template-block" xmlns="http://www.w3.org/1999/html">
     <div class="template-block-header clearfix">
         <div class="template-block-header-title">
             Форма материала
@@ -13,6 +13,17 @@
             <div class="template-form-group">
                 <div class="template-form-input">
                     <input class="template-form-input-field" type="text" id="<?php echo ($_id = uniqid('template-form-'))?>">
+                    <label class="template-form-input-placeholder" for="<?php echo $_id?>">Enter your email</label>
+                </div>
+            </div>
+
+            <div class="template-form-group">
+                <div class="template-form-input">
+                    <select class="template-form-input-field" id="<?php echo ($_id = uniqid('template-form-'))?>">
+                        <option></option>
+                        <option>1</option>
+                        <option>2</option>
+                    </select>
                     <label class="template-form-input-placeholder" for="<?php echo $_id?>">Enter your email</label>
                 </div>
             </div>
