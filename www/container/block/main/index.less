@@ -1,0 +1,21 @@
+.template-block-main {
+  .row {
+    & > div {
+      display: inline-block;
+      margin-right: @padding;
+
+      &.time {
+      }
+
+      &.item {
+
+      }
+
+      &.user {
+        float:right;
+      }
+
+      a { &:hover{ text-decoration: underline; } }
+    }
+  }
+}
