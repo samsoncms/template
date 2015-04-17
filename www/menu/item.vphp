@@ -1,4 +1,4 @@
-<li class="text <?php iv('active')?>">
+<li class="text <?php iv('active')?> <?php iv('class')?>">
     <?php if(isv('active')):?>
     <div class="item active">
         <?php if(isv('icon')):?>

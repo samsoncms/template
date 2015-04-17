@@ -68,7 +68,27 @@ class Template extends CompressableExternalModule
         $html = '';
         $submenu = '';
 
+        $html .= $this->view('menu/item')
+                ->set('icon', 'home')
+                ->set('name', t('Главная', true))
+                ->set('active', url()->module == '' ? 'active' : '')
+                ->output();
+
+        $html .= $this->view('menu/item')
+            ->set('icon', 'globe')
+            ->set('id', '../')
+            ->set('name', t('На сайт', true))
+            ->output();
+
         Event::fire('template.menu.started', array(&$html, &$submenu));
+
+        $html .= $this->view('menu/item')
+            ->set('icon', 'sign-out')
+            ->set('class', 'sign-out')
+            ->set('id', 'signin/logout')
+            ->set('name', t('Выход', true))
+            ->output();
+
         Event::fire('template.menu.rendered', array(&$html, &$submenu));
 
         // Prepare view
