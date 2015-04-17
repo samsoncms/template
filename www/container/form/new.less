@@ -16,17 +16,18 @@
       /* Input field */
       input[type=text] {
         border:0;
-        border-bottom: 2px solid @theme-color;
+        border-bottom: 1px solid @theme-color;
         width:100%;
         height: @form-group-height / 2;
         margin-top: @form-group-height / 2;
         padding-bottom: @padding / 4;
         z-index: 2;
 
-        transition:border @animation-duration;
+        transition:border, @animation-duration;
 
         &:focus {
           outline: none;
+          border-bottom-width: 2px;
           border-color:green;
 
           /* Label styling trigger */
