@@ -3,7 +3,7 @@
  */
 // TODO: Try to remove this when CSS will support it
 s('.template-form-input').pageInit(function(blocks){
-    var inputs = s('input', blocks);
+    var inputs = s('.template-form-input-field', blocks);
     // Bind blur event
     inputs.blur(function(input){
         var parent = input.parent();

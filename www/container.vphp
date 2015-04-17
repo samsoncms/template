@@ -12,19 +12,7 @@
         <div class="template-form">
             <div class="template-form-group">
                 <div class="template-form-input">
-                    <input type="text" id="<?php echo ($_id = uniqid('template-form-'))?>">
-                    <label class="template-form-input-placeholder" for="<?php echo $_id?>">Enter your email</label>
-                </div>
-            </div>
-            <div class="template-form-group">
-                <div class="template-form-input">
-                    <input type="text" id="<?php echo ($_id = uniqid('template-form-'))?>">
-                    <label class="template-form-input-placeholder" for="<?php echo $_id?>">Enter your email</label>
-                </div>
-            </div>
-            <div class="template-form-group">
-                <div class="template-form-input">
-                    <input type="text" id="<?php echo ($_id = uniqid('template-form-'))?>">
+                    <input class="template-form-input-field" type="text" id="<?php echo ($_id = uniqid('template-form-'))?>">
                     <label class="template-form-input-placeholder" for="<?php echo $_id?>">Enter your email</label>
                 </div>
             </div>
