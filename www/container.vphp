@@ -1,1 +1,17 @@
 <?php iv('template-container')?>
+<div class="template-block">
+    <div class="template-block-header">
+        <div class="template-block-header-title">
+            Форма материала
+        </div>
+        <div class="template-block-header-controls">
+
+        </div>
+    </div>
+    <div class="template-block-content">
+        <div class="template-form">
+
+        </div>
+    </div>
+</div>
+

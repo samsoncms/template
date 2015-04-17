@@ -1,0 +1,6 @@
+<div class="template-block">
+    <?php iv('header')?>
+    <div class="template-block-content">
+        <?php iv('content')?>
+    </div>
+</div>

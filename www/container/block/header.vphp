@@ -1,0 +1,8 @@
+<div class="template-block-header">
+    <div class="template-block-header-title">
+        <?php iv('title')?>
+    </div>
+    <div class="template-block-header-controls">
+        <?php iv('controls')?>
+    </div>
+</div>
