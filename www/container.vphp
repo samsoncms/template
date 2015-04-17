@@ -1,6 +1,6 @@
 <?php iv('template-container')?>
 <div class="template-block">
-    <div class="template-block-header">
+    <div class="template-block-header clearfix">
         <div class="template-block-header-title">
             Форма материала
         </div>
@@ -10,7 +10,12 @@
     </div>
     <div class="template-block-content">
         <div class="template-form">
-
+            <div class="template-form-group">
+                <div class="template-form-input">
+                    <input type="text" id="<?php echo ($_id = uniqid('template-form-'))?>">
+                    <label class="template-form-input-placeholder" for="<?php echo $_id?>">Enter your email</label>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -1,4 +1,4 @@
-<div class="template-block-header">
+<div class="template-block-header clearfix">
     <div class="template-block-header-title">
         <?php iv('title')?>
     </div>
