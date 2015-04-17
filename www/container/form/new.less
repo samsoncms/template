@@ -5,14 +5,15 @@
       position: relative;
       height: @form-group-height;
 
-      /* Filled input block */
+      /* Filled input block state, temporary done via JS */
       &.filled {
         label {
           font-size: @form-group-placeholder-font-size * 0.85;
-          top: 0;
+          top: -0.15 * @form-group-height;
         }
       }
 
+      /* Input field */
       input[type=text] {
         border:0;
         border-bottom: 2px solid @theme-color;
@@ -22,7 +23,7 @@
         padding-bottom: @padding / 4;
         z-index: 2;
 
-        transition:border-color @animation-duration;
+        transition:border @animation-duration;
 
         &:focus {
           outline: none;
@@ -31,7 +32,8 @@
           /* Label styling trigger */
           & ~ .template-form-input-placeholder {
             font-size: @form-group-placeholder-font-size * 0.85;
-            top: 0;
+            top: -0.15 * @form-group-height;
+            color:@form-group-input-active-color;
           }
         }
       }
@@ -43,11 +45,12 @@
         font-size: @form-group-placeholder-font-size;
         z-index: 1;
         padding-bottom: @padding / 4;
+        color:@form-group-input-color;
         cursor:text;
 
         .opacity(0.8);
 
-        transition:font @animation-duration, top @animation-duration, border-color @animation-duration;
+        transition:font @animation-duration, top @animation-duration, color @animation-duration;
       }
     }
   }
