@@ -121,5 +121,7 @@ class Template extends CompressableExternalModule
             ->set('template-container', $html)
             ->output()
         )->title(t('Страница не найдена', true));
+
+        header("HTTP/1.0 404 Not Found");
     }
 }
