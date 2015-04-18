@@ -61,6 +61,41 @@ For rendering sub-menu section you need to fill ```$submenu``` in your event han
 #### Menu rendered event - ```template.menu.rendered: &$html, &$submenu```
 This event fires when all menu inner items has been rendered into main container.
 
+#### Menu event handler example
+This is a modified old approach menu & sub-menu render integrated via new menu events
+```php 
+function oldMenuRenderer(&$html, &$subMenu)
+{
+    // Iterate loaded samson\cms\application
+    foreach (\samson\cms\App::loaded() as $app) {
+        // Show only visible apps
+        if ($app->hide == false) {
+            // Render application menu item
+            $html .= m('template')
+                ->view('menu/item')
+                ->active(url()->module == $app->id() ? 'active' : '')
+                ->app($app)
+                ->icon($app->icon)
+                ->name(isset($app->name{0}) ? $app->name : (isset($app->app_name{0}) ? $app->app_name : ''))
+                ->output();
+        }
+    }
+
+    $subMenu = '';
+
+    // Find current SamsonCMS application
+    if (\samson\cms\App::find(url()->module, $app/*@var $app App*/)) {
+        // Render main-menu application sub-menu
+        $subMenu = $app->submenu();
+
+        // If module has sub_menu view - render it
+        if ($app->findView('sub_menu')) {
+            $subMenu .= $app->view('sub_menu')->output();
+        }
+    }
+}
+```
+
 ### Container events
 #### Main page created event - ```template.main.created```
 This event fires before main page rendering process has started.
