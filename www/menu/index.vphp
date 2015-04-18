@@ -1,18 +1,16 @@
 <section class="template-menu <?php isv('submenu', 'has-sub-menu')?>">
-
-    <nav>
         <ul class="template-menu-list">
             <?php iv('template-menu')?><li class="i18n">
                 <?php m('i18n')->render('list')?>
             </li>
         </ul>
-    </nav>
-
 </section>
 
 <?php if(isv('submenu')):?>
-    <ul class="template-sub-menu">
-        <li class="collapser icon2" title="<?php t('Нажмите что бы скрыть\увидеть подменю')?>"></li>
-        <?php iv('submenu')?>
-    </ul>
+    <section class="template-sub-menu">
+        <ul class="template-sub-menu-list">
+            <li class="collapser icon2" title="<?php t('Нажмите что бы скрыть\увидеть подменю')?>"></li>
+            <?php iv('submenu')?>
+        </ul>
+    </section>
 <?php endif ?>

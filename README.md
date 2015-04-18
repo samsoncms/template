@@ -21,30 +21,49 @@ This template is basic and included in a SamsonCMS bootstrap, but can be easily 
 by custom or modified once, the only limitation that must be met is template structure and
 its events, as all SamsonCMS ecosystem is based on this structure and entities.
 
-## Structure
-This base SamsonCMS template structure can be defined as next:
-* left menu block (#template-left-menu)
-* main container block (#template-container)
+Template is using [Font-Awesome](http://fortawesome.github.io/Font-Awesome/) for all icons.
 
 ## Events
 All structure blocks have Events(http://github.com/samsonphp/event), and all
 their filling and rendering should be done via this events.
 
-### Menu events
-#### Menu created event - ```template.menu.created```
-This event fires before generic menu rendering process has started.
+## Template structure
+This base SamsonCMS template structure can be defined as next:
+* Menu section ```.template-menu```
+* Sub-menu section ```.template-sub-menu```
+* Container section ```.template-container```
 
-#### Menu rendered event - ```template.menu.rendered```
+### Template menu structure
+Index view is located ```www/menu/index.vphp```, menu item view is located ```www/menu/item.vphp```
++ ```<section>.template-menu```
+| - + ```<ul>.template-menu-list```
+    | - + ```<li>.text``` or ```<li>.active```
+        | - + ```<a>.item``` or ```<div>.item``` (for .active element)
+            | - ```<i>``` For icons
+            | - ```<span>``` For item text
+            
+### Template sub-menu structure
+Index view is located ```www/menu/index.vphp```, menu item view is located ```www/menu/item.vphp```
++ ```<section>.template-sub-menu```
+| - + ```<ul>.template-sub-menu-list```
+    | - + ```<li>.collapser``` For showing/hiding sub-menu
+    | - + ```<li>```  You can use any inner item structure
+    
+### Menu events
+#### Menu created event - ```template.menu.started: &$html, &$submenu``` 
+This event fires before generic menu rendering process has started. Before menu started default
+template menu item would be automatically added:
+* Main page item
+* Go to site item
+So in your event you will already receive not an empty menu ```$html```, this gives you ability to remove 
+this default items or change them.
+
+For rendering sub-menu section you need to fill ```$submenu``` in your event handler.
+
+#### Menu rendered event - ```template.menu.rendered: &$html, &$submenu```
 This event fires when all menu inner items has been rendered into main container.
 
 ### Container events
-#### Container created event - ```template.container.created```
-This event fires before container rendering process has started.
-
-#### Container rendered event - ```template.container.rendered```
-This event fires when container has been rendered into main container.
-
-### Main page events
 #### Main page created event - ```template.main.created```
 This event fires before main page rendering process has started.
 

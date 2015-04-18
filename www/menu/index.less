@@ -1,58 +1,54 @@
 .template-menu {
   background-color: @menu-bg-color;
-  position:fixed;
-  left:0px;
-  top:0px;
-  bottom:0px;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  bottom: 0px;
   width: @menu-collapsed-width;
-  z-index:3;
+  z-index: 3;
 
-  nav {
+  .template-menu-list {
+    text-align: center;
+    position: relative;
+    z-index: 4;
     height: 100%;
 
-    .template-menu-list {
-      text-align: center;
-      position: relative;
-      z-index: 4;
-      height: 100%;
+    /* Try to make lines */
+    padding-top: @padding;
 
-      /* Try to make lines */
-      padding-top: @padding;
+    .text {
+      margin-bottom: @padding;
 
-      .text {
-        margin-bottom: @padding;
+      .opacity(0.7);
 
-        .opacity(0.7);
+      &:active, &.active {
+        .opacity(1);
+      }
 
-        &:active, &.active {
-          .opacity(1);
+      &:hover, &.hover {
+        .opacity(0.85);
+      }
+
+      &.sign-out {
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+      }
+
+      .item {
+        color: @menu-color;
+        display: block;
+
+        i {
+          font-size: @menu-icon-fontsize;
+          min-width: 1.5*@padding;
+          vertical-align: middle;
         }
 
-        &:hover, &.hover {
-          .opacity(0.85);
-        }
-
-        &.sign-out {
-          position: absolute;
-          bottom: 0px;
-          width:100%;
-        }
-
-        .item {
-          color: @menu-color;
+        span {
           display: block;
-
-          i {
-            font-size: @menu-icon-fontsize;
-            min-width: 1.5*@padding;
-            vertical-align: middle;
-          }
-
-          span {
-            display: block;
-            font-size: @menu-text-size;
-            vertical-align: middle;
-          }
+          font-size: @menu-text-size;
+          vertical-align: middle;
         }
       }
     }
