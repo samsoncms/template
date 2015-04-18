@@ -35,10 +35,10 @@ This base SamsonCMS template structure can be defined as next:
 Index view is located ```www/menu/index.vphp```, menu item view is located ```www/menu/item.vphp```
 * ```<section>.template-menu```
     * ```<ul>.template-menu-list```
-        * ```<li>.text``` or ```<li>.active```
-            * ```<a>.item``` or ```<div>.item``` (for .active element)
-            * ```<i>``` For icons
-            * ```<span>``` For item text
+        * ```<li>.text``` Added ```.active``` if item is active
+            * ```<a>.item``` or ```<div>.item``` (for .active element as it cannot be clicked)
+            * ```<i>``` For icons (do not use it if no icon is needed)
+            * ```<span>``` For item text (do not use it if no text is needed)
             
 ### Template sub-menu structure
 Index view is located ```www/menu/index.vphp```, menu item view is located ```www/menu/item.vphp```
