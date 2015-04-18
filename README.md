@@ -96,6 +96,18 @@ function oldMenuRenderer(&$html, &$subMenu)
 }
 ```
 
+### Template container structure
+All elements inside container must be inside ```.template-block```
+* ```<section>.template-container```
+    * ```<div>.template-block``` 
+    
+#### Template container form structure
+* ```<*>.template-form``` Should be used for all forms
+    * ```<div>.template-form-group``` - Form row
+        * ```<div>.template-form-input``` - Form input field
+            * ```<input,select,textarea>.template-form-input-field```
+            * ```<label>.template-form-input-placeholder``` Used instead of standard placeholder
+        
 ### Container events
 #### Main page created event - ```template.main.created```
 This event fires before main page rendering process has started.
