@@ -1,1 +1,2 @@
 <h1><?php t('Страница не найдена')?></h1>
+<?php iv('template-container')?>

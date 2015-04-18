@@ -43,6 +43,12 @@ class Template extends CompressableExternalModule
     /** @var string Module identifier */
     protected $id = 'template';
 
+    /** Subscribed to e404 */
+    public function init(array $params = array())
+    {
+        Event::subscribe('core.e404', array($this, '__e404'));
+    }
+
     /**
      * Universal controller action, this is SamsonCMS main page
      * rendering.
@@ -109,8 +115,11 @@ class Template extends CompressableExternalModule
         Event::fire('template.e404.started', array(&$html));
         Event::fire('template.e404.rendered', array(&$html));
 
-        $this->view('e404')
-            ->title(t('Страница не найдена', true))
-            ->set('template-container', $html);
+        // Render template e404 into local module
+        m('local')->html(
+            $this->view('e404')
+            ->set('template-container', $html)
+            ->output()
+        )->title(t('Страница не найдена', true));
     }
 }
