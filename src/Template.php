@@ -102,6 +102,7 @@ class Template extends CompressableExternalModule
             // TODO: Remove samson\core\Core dependency
             ->set('module', url()->module)
             ->set('logo', $this->menuLogo)
+
             ->set('template-menu', $html)
             ->set('submenu', $submenu);
     }
