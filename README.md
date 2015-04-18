@@ -10,9 +10,7 @@
 This module is responsible for rendering base HTML template,
 its styles, icons and images. 
 
-All styles is created with LESS, using all of its features:
-* mixins
-* variables
+All template styles is created with LESS, every entity has it ```vars.less```.
 
 This module should define HTML structure of SamsonCMS, its building blocks
 and entities which should be used in all other SamsonCMS modules and applications.
@@ -35,19 +33,19 @@ This base SamsonCMS template structure can be defined as next:
 
 ### Template menu structure
 Index view is located ```www/menu/index.vphp```, menu item view is located ```www/menu/item.vphp```
-| ```<section>.template-menu```
-| - ```<ul>.template-menu-list```
-    | - | ```<li>.text``` or ```<li>.active```
-        | - | ```<a>.item``` or ```<div>.item``` (for .active element)
-            | - ```<i>``` For icons
-            | - ```<span>``` For item text
+* ```<section>.template-menu```
+    * ```<ul>.template-menu-list```
+        * ```<li>.text``` or ```<li>.active```
+            * ```<a>.item``` or ```<div>.item``` (for .active element)
+            * ```<i>``` For icons
+            * ```<span>``` For item text
             
 ### Template sub-menu structure
 Index view is located ```www/menu/index.vphp```, menu item view is located ```www/menu/item.vphp```
-- ```<section>.template-sub-menu```
-| - ```<ul>.template-sub-menu-list```
-    | - ```<li>.collapser``` For showing/hiding sub-menu
-    | - ```<li>```  You can use any inner item structure
+* ```<section>.template-sub-menu```
+    * ```<ul>.template-sub-menu-list```
+        * ```<li>.collapser``` For showing/hiding sub-menu
+        * ```<li>```  You can use any inner item structure
     
 ### Menu events
 #### Menu created event - ```template.menu.started: &$html, &$submenu``` 
