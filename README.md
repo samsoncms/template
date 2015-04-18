@@ -35,19 +35,19 @@ This base SamsonCMS template structure can be defined as next:
 
 ### Template menu structure
 Index view is located ```www/menu/index.vphp```, menu item view is located ```www/menu/item.vphp```
-+ ```<section>.template-menu```
-| - + ```<ul>.template-menu-list```
-    | - + ```<li>.text``` or ```<li>.active```
-        | - + ```<a>.item``` or ```<div>.item``` (for .active element)
+| ```<section>.template-menu```
+| - ```<ul>.template-menu-list```
+    | - | ```<li>.text``` or ```<li>.active```
+        | - | ```<a>.item``` or ```<div>.item``` (for .active element)
             | - ```<i>``` For icons
             | - ```<span>``` For item text
             
 ### Template sub-menu structure
 Index view is located ```www/menu/index.vphp```, menu item view is located ```www/menu/item.vphp```
-+ ```<section>.template-sub-menu```
-| - + ```<ul>.template-sub-menu-list```
-    | - + ```<li>.collapser``` For showing/hiding sub-menu
-    | - + ```<li>```  You can use any inner item structure
+- ```<section>.template-sub-menu```
+| - ```<ul>.template-sub-menu-list```
+    | - ```<li>.collapser``` For showing/hiding sub-menu
+    | - ```<li>```  You can use any inner item structure
     
 ### Menu events
 #### Menu created event - ```template.menu.started: &$html, &$submenu``` 
