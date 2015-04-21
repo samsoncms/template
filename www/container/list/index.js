@@ -62,9 +62,14 @@ function templateList(table, pager, asyncCompleteHandler) {
         }
 
         try {
-            // If we have table html - update it
+
+            // TODO: Remove when material app will be updated
             if (serverResponse.table_html) table.html(serverResponse.table_html);
             if (serverResponse.table_pager) pager.html(serverResponse.table_pager);
+
+            // If we have collection html - update it
+            if (serverResponse.collection_html) table.html(serverResponse.collection_html);
+            if (serverResponse.collection_pager) pager.html(serverResponse.collection_pager);
         } catch (e) {
 
         }
