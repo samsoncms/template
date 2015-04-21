@@ -131,24 +131,26 @@ function templateList(table, pager, asyncCompleteHandler) {
         init(response);
     });
 
-    // Disable search form submit
-    //s('form.search').submit(function() {
-    //    // Get search input
-    //    var keywords = searchField.val();
-    //
-    //    // Remove possible search timeout
-    //    clearTimeout(searchTimeout);
-    //    // Abort current search request
-    //    searchRequest ? searchRequest.abort() : null;
-    //
-    //    // Perform async request to server for rendering table
-    //    asyncSearch(0, keywords, 1, function(response) {
-    //        // re-render table
-    //        init(response);
-    //    });
-    //
-    //    return false;
-    //});
+
+    // Table view switching
+    var switchToTable = s('.icon2-table');
+    var switchToBlocks = s('.icon2-th');
+    switchToTable.click(function(){
+        // Add fixed header to materials table
+        table.fixedHeader('.table2-header-row', '.table2-body');
+        switchToTable.hide();
+        switchToBlocks.show();
+        table.removeClass(switchToBlocks.a('tableclass'));
+        table.addClass(switchToTable.a('tableclass'));
+    });
+
+    switchToBlocks.click(function(){
+        s('.__fixedHeaderClone ').remove();
+        switchToBlocks.hide();
+        switchToTable.show();
+        table.removeClass(switchToTable.a('tableclass'));
+        table.addClass(switchToBlocks.a('tableclass'));
+    });
 
     // Init table
     init();

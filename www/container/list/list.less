@@ -4,6 +4,23 @@
   clear: both;
   border-collapse: collapse;
 
+  &.default {
+    &.control {
+      text-align: center;
+      max-width:6*@padding;
+
+      a {
+        width: 18px;
+        display: inline-block;
+      }
+    }
+
+    &.id {
+      text-align: center;
+      max-width:4*@padding;
+    }
+  }
+
   .table2-body {
     display: table-row-group;
   }
@@ -18,25 +35,12 @@
       border: 1px solid @table2-border-color;
       font-size: 0.9em;
       text-align: center;
+      vertical-align: middle;
 
       a {
         &:hover {
           text-decoration: underline;
         }
-      }
-
-      &.control {
-        text-align: center;
-
-        a {
-          width: 18px;
-          display: inline-block;
-        }
-      }
-
-      &.id {
-        text-align: center;
-        max-width:75px;
       }
 
       &.table2-header-col {
@@ -45,10 +49,6 @@
         cursor: pointer;
         background-color: @table2-header-bg-color;
         color: #000;
-      }
-
-      &.id, &.name, &.url, &.structure, &.modified, &.published, &.control {
-        vertical-align: middle;
       }
     }
   }
