@@ -5,19 +5,24 @@
   border-collapse: collapse;
 
   &.default {
-    &.control {
-      text-align: center;
-      max-width:6*@padding;
+    .table2-row {
+      .table2-col {
+        &.control {
+          text-align: center;
+          max-width: 6*@padding;
 
-      a {
-        width: 18px;
-        display: inline-block;
+          a {
+            width: 18px;
+            display: inline-block;
+            font-size:@block-icon-font-size;
+          }
+        }
+
+        &.id {
+          text-align: center;
+          max-width: 4*@padding;
+        }
       }
-    }
-
-    &.id {
-      text-align: center;
-      max-width:4*@padding;
     }
   }
 
