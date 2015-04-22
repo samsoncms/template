@@ -1,6 +1,20 @@
 <section class="template-menu <?php isv('submenu', 'has-sub-menu')?>">
         <ul class="template-menu-list">
-            <?php iv('template-menu')?><li class="i18n">
+            <li class="arrow arrow-top" style="display: none;">
+                <a class="item">
+                    <i class="icon icon2 icon2-chevron-up"></i>
+                </a>
+            </li>
+
+            <?php iv('template-menu')?>
+
+            <li class="arrow arrow-bottom" style="display: none;">
+                <a class="item">
+                    <i class="icon icon2 icon2-chevron-down"></i>
+                </a>
+            </li>
+
+            <li class="i18n">
                 <?php m('i18n')->render('list')?>
             </li>
         </ul>
