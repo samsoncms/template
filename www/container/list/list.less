@@ -54,6 +54,28 @@
         cursor: pointer;
         background-color: @table2-header-bg-color;
         color: #000;
+
+        .collection-sort-link {
+          position: relative;
+          &:after {
+            font: normal normal normal 14px/1 FontAwesome;
+            content: @fa-var-caret-right;
+            position: absolute;
+            right: -10px;
+            top: 3px;
+          }
+
+          &.asc {
+            &:after {
+              content: @fa-var-caret-down;
+            }
+          }
+          &.desc {
+            &:after {
+              content: @fa-var-caret-up;
+            }
+          }
+        }
       }
     }
   }

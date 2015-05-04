@@ -99,6 +99,23 @@ function templateList(table, pager, asyncCompleteHandler) {
                 }
             });
 
+            s('.collection-sort-link', table).each(function(link){
+                var currentHREF = link.a('href');
+                currentHREF += '?' + link.a('name-attr') + '=' + link.a('dest-attr');
+                link.a('href', currentHREF);
+                link.ajaxClick(function(response) {
+                    loader.hide();
+                    init(response);
+                }, function(){
+                    // Create generic loader
+                    var loader = new Loader(table);
+
+                    // Show loader with i18n text and black bg
+                    loader.show('', true);
+                    return true;
+                });
+            });
+
             s('a', pager).each(function(obj) {
                 obj.ajaxClick(function(response) {
                     loader.hide();
