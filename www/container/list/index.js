@@ -100,16 +100,16 @@ function templateList(table, pager, asyncCompleteHandler) {
             });
 
             s('.collection-sort-link', table).each(function(link){
-                var currentHREF = link.a('href');
-                currentHREF += '?' + link.a('name-attr') + '=' + link.a('dest-attr');
+                var currentHREF = link.a('href') + link.a('link-attr');
                 link.a('href', currentHREF);
+
+                // Create generic loader
+                var loader = new Loader(table);
+
                 link.ajaxClick(function(response) {
                     loader.hide();
                     init(response);
                 }, function(){
-                    // Create generic loader
-                    var loader = new Loader(table);
-
                     // Show loader with i18n text and black bg
                     loader.show('', true);
                     return true;
