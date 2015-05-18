@@ -1,7 +1,7 @@
 /* Header part of the content */
 .top {
-
   width: 100%;
+  text-align: justify;
 
   /* Main heading */
   h1 {
@@ -22,5 +22,18 @@
     .icon2 {
       margin-right: @padding/2;
     }
+  }
+  &:after{
+    content: '';
+    display: inline-block;
+    width: 100%;
+    height: 0;
+    font-size:0;
+    line-height:0;
+  }
+
+  .top-inline-block {
+    display: inline-block;
+    vertical-align: middle;
   }
 }
