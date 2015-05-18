@@ -8,7 +8,6 @@
 namespace samsoncms\template;
 
 use samson\core\CompressableExternalModule;
-use samson\cms\App;
 use samsonphp\event\Event;
 
 /**
