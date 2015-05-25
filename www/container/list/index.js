@@ -130,6 +130,10 @@ function templateList(table, pager, asyncCompleteHandler) {
                 });
             });
         }
+
+        (s('.table2-row-notfound', table).length || s('.table2-row-empty', table).length)
+            ? s('.table-switcher').hide()
+            : s('.table-switcher').css('display', 'inline-block');
     }
 
 

@@ -1,4 +1,4 @@
 <div class="table-switcher">
-    <a class="icon2 icon2-table" tableclass="default" <?php t('Отобразить в виде таблицы')?>></a>
+    <a class="icon2 icon2-table" tableclass="default" title="<?php t('Отобразить в виде таблицы')?>"></a>
     <a class="icon2 icon2-th" tableclass="tiles" title="<?php t('Отобразить в виде блоков')?>"></a>
 </div>
