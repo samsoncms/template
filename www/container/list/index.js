@@ -184,5 +184,7 @@ function templateList(table, pager, asyncCompleteHandler) {
 
 // Bind list logic
 s('.table2').pageInit(function(table){
-    templateList(table, s('.table-pager'));
+    if (!table.hasClass('custom-table2')) {
+        templateList(table, s('.table-pager'));
+    }
 });
