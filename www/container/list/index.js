@@ -185,6 +185,8 @@ function templateList(table, pager, asyncCompleteHandler) {
 // Bind list logic
 s('.table2').pageInit(function(table){
     if (!table.hasClass('custom-table2')) {
-        templateList(table, s('.table-pager'));
+        templateList(table, s('.table-pager'), function() {
+            SamsonCMS_Input.update(s('body'));
+        });
     }
 });
