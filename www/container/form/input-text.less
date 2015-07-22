@@ -2,8 +2,8 @@
   margin-bottom:@padding;
 
   /* Input field */
-  .template-form-input {
-
+  .template-form-input  {
+    position:relative;
     border: 0;
     border-bottom: 1px solid @theme-color;
     width: 100%;
@@ -18,11 +18,15 @@
     .__input {
       left: -5px !important;
     }
+  }
 
-    input {
-      outline: none;
-      border: none;
-    }
+  input, select {
+    outline: none;
+    border: none;
+  }
+
+  select.__input {
+    top: 0px !important;
   }
 
   .form-field-title span {
