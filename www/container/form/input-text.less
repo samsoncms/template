@@ -12,6 +12,7 @@
     padding-bottom: @padding / 4;
     z-index: 2;
     background-color: transparent;
+    text-align: left;
 
     transition: border, @animation-duration;
 
@@ -28,6 +29,8 @@
   select.__input {
     top: 0px !important;
   }
+
+  input[type=checkbox] { float:left; }
 
   .form-field-title span {
     .transition(top);
