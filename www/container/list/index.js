@@ -9,7 +9,7 @@
  * @param asyncCompleteHandler External handler after async table rendering
  * @constructor
  */
-function templateList(table, pager, asyncCompleteHandler) {
+function templateList(table, pager, asyncCompleteHandler, custom_pager) {
 
     var completeHandler = asyncCompleteHandler !== undefined ? asyncCompleteHandler : false;
 
@@ -116,19 +116,24 @@ function templateList(table, pager, asyncCompleteHandler) {
                 });
             });
 
-            s('a', pager).each(function(obj) {
-                obj.ajaxClick(function(response) {
-                    loader.hide();
-                    init(response);
-                }, function(){
-                    // Create generic loader
-                    var loader = new Loader(table);
+            custom_pager = (custom_pager === undefined || !custom_pager) ? false : true;
+            s.trace(custom_pager);
+            if (!custom_pager) {
+                s('a', pager).each(function(obj) {
+                    obj.ajaxClick(function(response) {
+                        loader.hide();
+                        init(response);
+                    }, function(){
+                        // Create generic loader
+                        var loader = new Loader(table);
 
-                    // Show loader with i18n text and black bg
-                    loader.show('', true);
-                    return true;
+                        // Show loader with i18n text and black bg
+                        loader.show('', true);
+                        return true;
+                    });
                 });
-            });
+            }
+
         }
 
         (s('.table2-row-notfound', table).length || s('.table2-row-empty', table).length)
