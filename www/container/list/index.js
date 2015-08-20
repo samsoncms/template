@@ -57,6 +57,10 @@ function templateList(table, pager, asyncCompleteHandler, custom_pager) {
         if (serverResponse) try {
             // Parse JSON response
             serverResponse = JSON.parse(serverResponse);
+            
+            if (serverResponse.error_message) {
+                alert(serverResponse.error_message);
+            }
         } catch (e) {
 
         }
@@ -117,7 +121,6 @@ function templateList(table, pager, asyncCompleteHandler, custom_pager) {
             });
 
             custom_pager = (custom_pager === undefined || !custom_pager) ? false : true;
-            s.trace(custom_pager);
             if (!custom_pager) {
                 s('a', pager).each(function(obj) {
                     obj.ajaxClick(function(response) {
