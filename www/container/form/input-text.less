@@ -1,56 +1,53 @@
-.template-form-input {
-  position: relative;
-  height: @form-group-height;
-
-  /* Filled input block state, temporary done via JS */
-  &.filled {
-    label {
-      font-size: @form-group-placeholder-font-size * 0.85;
-      top: -0.15 * @form-group-height;
-    }
-  }
+.template-form-input-group {
+  margin-bottom:@padding;
 
   /* Input field */
-  .template-form-input-field {
+  .template-form-input  {
     position:relative;
-    border:0;
+    border: 0;
     border-bottom: 1px solid @theme-color;
-    width:100%;
+    width: 100%;
     max-width: 100%;
-    height: @form-group-height / 2;
-    margin-top: @form-group-height / 2;
+    margin-top: @form-group-height / 3;
     padding-bottom: @padding / 4;
     z-index: 2;
     background-color: transparent;
+    text-align: left;
 
-    transition:border, @animation-duration;
+    transition: border, @animation-duration;
 
-    &:focus {
-      outline: none;
-      border-bottom-width: 2px;
-      border-color:green;
-
-      /* Label styling trigger */
-      & ~ .template-form-input-placeholder {
-        font-size: @form-group-placeholder-font-size * 0.85;
-        top: -0.15 * @form-group-height;
-        color:@form-group-input-active-color;
-      }
+    .__input {
+      left: -5px !important;
     }
   }
 
-  /* Make label to act like placeholder via css */
-  .template-form-input-placeholder {
-    position:absolute;
-    top:(@form-group-height / 2) - @padding / 4;
-    font-size: @form-group-placeholder-font-size;
-    z-index: 1;
-    padding-bottom: @padding / 4;
-    color:@form-group-input-color;
-    cursor:text;
+  input, select {
+    outline: none;
+    border: none;
+  }
 
-    .opacity(0.8);
+  select.__input {
+    top: 0px !important;
+  }
 
-    transition:font @animation-duration, top @animation-duration, color @animation-duration;
+  input[type=checkbox] { float:left; }
+
+  .form-field-title span {
+    .transition(top);
+    .transition(font-size);
+  }
+
+  &.focused {
+    .form-field-title span {
+      font-size: @form-group-placeholder-font-size * 0.75;
+      top: -0.15 * @form-group-height;
+      color: @form-group-input-active-color;
+    }
+
+    .template-form-input {
+      outline: none;
+      border-bottom-width: 2px;
+      border-color: green;
+    }
   }
 }
