@@ -83,6 +83,7 @@ class Template extends CompressableExternalModule
             ->set('icon', 'globe')
             ->set('id', '../')
             ->set('name', t('На сайт', true))
+            ->set('target', '_blank')
             ->output();
 
         Event::fire('template.menu.started', array(&$html, &$submenu));
