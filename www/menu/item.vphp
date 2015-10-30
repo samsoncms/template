@@ -8,7 +8,7 @@
     </div>
     <?php else:?>
     <a class="item" href="<?php url_base( $id )?>" title="<?php t($name) ?>"
-        <?php if isv('target'):?>
+        <?php if(isv('target')):?>
             target="<?php iv('target');?>"
         <?php endif;?>
         >
