@@ -11,6 +11,8 @@ function templateMenuSliderInit(list)
     var topArrow = s('.arrow-top', list);
     var bottomArrow = s('.arrow-bottom', list);
 
+    var bottomArrowOver = false, topArrowOver = false;
+
     // Find item height. Each item has 20px margin
     var itemHeight = s('li.text', list).height() + 20;
 
@@ -48,31 +50,74 @@ function templateMenuSliderInit(list)
     // Save pointer of first invisible item
     var nextPointer = visibleCount;
 
-    bottomArrow.click(function(arrow) {
-        topArrow.show();
-        items[currentPointer].hide();
-        items[nextPointer].show();
+    // Time delay
+    var timeDelay = 1000;
 
-        currentPointer++;
-        nextPointer++;
+    AnimateBottom = function (arrow) {
+        if (bottomArrowOver) {
+            topArrow.show();
+            items[currentPointer].hide();
+            items[nextPointer].show();
 
-        // Hide arrow if it was last item
-        if (nextPointer == itemsCount) {
-            arrow.hide();
+            currentPointer++;
+            nextPointer++;
+
+            // Hide arrow if it was last item
+            if (nextPointer == itemsCount) {
+                arrow.hide();
+                bottomArrowOver = false;
+            }
+
+            setTimeout(function () {
+                AnimateBottom(arrow);
+            }, timeDelay);
+        }
+    };
+
+    bottomArrow.mouseover(function(arrow){
+        if (!bottomArrowOver) {
+            bottomArrowOver = true;
+            setTimeout(function () {
+                AnimateBottom(arrow);
+            }, timeDelay);
         }
     });
 
-    topArrow.click(function(arrow) {
-        bottomArrow.show();
-        items[currentPointer-1].show();
-        items[nextPointer-1].hide();
+    bottomArrow.mouseout(function(){
+        bottomArrowOver = false;
+    });
 
-        currentPointer--;
-        nextPointer--;
+    AnimateTop = function (arrow) {
+        if (topArrowOver) {
+            bottomArrow.show();
+            items[currentPointer-1].show();
+            items[nextPointer-1].hide();
 
-        // Hide arrow if it was first item
-        if (currentPointer == 0) {
-            arrow.hide();
+            currentPointer--;
+            nextPointer--;
+
+            // Hide arrow if it was first item
+            if (currentPointer == 0) {
+                arrow.hide();
+                topArrowOver = false;
+            }
+
+            setTimeout(function () {
+                AnimateTop(arrow);
+            }, timeDelay);
         }
+    };
+
+    topArrow.mouseover(function(arrow){
+        if (!topArrowOver) {
+            topArrowOver = true;
+            setTimeout(function () {
+                AnimateTop(arrow);
+            }, timeDelay);
+        }
+    });
+
+    topArrow.mouseout(function(){
+        topArrowOver = false;
     });
 }
