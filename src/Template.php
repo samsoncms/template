@@ -76,6 +76,7 @@ class Template extends CompressableExternalModule
         $html .= $this->view('menu/item')
                 ->set('icon', 'home')
                 ->set('name', t('Главная', true))
+                ->set('class', 'homeLink')
                 ->set('active', url()->module == '' ? 'active' : '')
                 ->output();
 
