@@ -15,5 +15,6 @@ s('.template-menu').pageInit(function(menu){
 
     var collapse2 = s('.collapser').click(function(clicked){
         s('.template-sub-menu').toggleClass('collapsed');
+        s('.active', '.template-menu-list').toggleClass('collapsedActive');
     });
 });
