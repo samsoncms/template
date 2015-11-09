@@ -42,15 +42,12 @@
     line-height:@menu-item-height;
     margin-bottom:@padding/2;
     overflow: hidden;
+    position: relative;
 
     a {.opacity(0.7);}
 
     &:hover, &.hover {
       a {.opacity(0.8);}
-    }
-
-    &:active, &.active {
-      a {.opacity(1);}
     }
 
     &.collapser {
@@ -83,6 +80,20 @@
     a {
       padding-left:@padding;
       color:  @sub-menu-color;
+    }
+
+    &.active>a, & .active {
+      opacity: 1;
+      &:before{
+        content: '';
+        border-top: 9px solid transparent;
+        border-right: 8px solid #e4e8ed;
+        border-bottom: 9px solid transparent;
+        position: absolute;
+        right: 0;
+        margin-top: -10px;
+        top: 50%;
+      }
     }
   }
 }

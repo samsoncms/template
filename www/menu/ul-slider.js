@@ -8,8 +8,8 @@ s('.template-menu-list').pageInit(function(menuList) {
 
 function templateMenuSliderInit(list)
 {
-    var topArrow = s('.arrow-top', list);
-    var bottomArrow = s('.arrow-bottom', list);
+    var topArrow = s('.arrow-top > .item > .icon2-chevron-up', list);
+    var bottomArrow = s('.arrow-bottom > .item > .icon2-chevron-down', list);
 
     var bottomArrowOver = false, topArrowOver = false;
 
