@@ -1,16 +1,16 @@
 <section class="template-menu <?php isv('submenu', 'has-sub-menu')?>">
         <ul class="template-menu-list">
-            <li class="arrow arrow-top">
+            <li class="arrow arrow-top" style="display: none;">
                 <a class="item">
-                    <i class="icon icon2 icon2-chevron-up" style="display: none;"></i>
+                    <i class="icon icon2 icon2-chevron-up"></i>
                 </a>
             </li>
 
             <?php iv('template-menu')?>
 
-            <li class="arrow arrow-bottom">
+            <li class="arrow arrow-bottom" style="display: none;">
                 <a class="item">
-                    <i class="icon icon2 icon2-chevron-down" style="display: none;"></i>
+                    <i class="icon icon2 icon2-chevron-down"></i>
                 </a>
             </li>
 
