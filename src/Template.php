@@ -114,6 +114,8 @@ class Template extends CompressableExternalModule
         // HTML main #template-container
         $html = '';
 
+        $this->system->active($this);
+
         Event::fire('template.e404.started', array(&$html));
         Event::fire('template.e404.rendered', array(&$html));
 
