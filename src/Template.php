@@ -43,10 +43,10 @@ class Template extends CompressableExternalModule
     protected $id = 'template';
 
     /** Subscribed to e404 */
-    public function init(array $params = array())
-    {
-        Event::subscribe('core.e404', array($this, '__e404'));
-    }
+    //p0ublic function init(array $params = array())
+    //{
+    //    Event::subscribe('core.e404', array($this, '__e404'));
+    //}
 
     /**
      * Universal controller action, this is SamsonCMS main page
