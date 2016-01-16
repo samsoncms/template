@@ -10,7 +10,8 @@
     ],
     "require": {
         "samsonos/php_core": "*",
-        "samsonos/php_i18n": "*"
+        "samsonos/php_i18n": "*",
+        "samsonos/js_core": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "4.2.*"
