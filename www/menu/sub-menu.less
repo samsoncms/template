@@ -20,13 +20,31 @@
     &:hover {.opacity(0.9);}
 
     li {
-      display:none;
+      //display:none;
 
       &.collapser {
         display: block;
         height:100%;
 
         &:before { content:"\f101"; position: absolute; bottom: 0; width: 100%; left: 0;}
+      }
+
+      &.template-sub-menu-search {
+        display: none;
+      }
+
+      a {
+        color: transparent;
+        padding-left: 0;
+        text-align: center;
+        display: block;
+        width: 100%;
+        i {
+          color: #ffffff;
+          padding-left: 8px;
+          display: block;
+          margin: 8px auto;
+        }
       }
     }
 
@@ -79,7 +97,7 @@
 
     a {
       padding-left:@padding;
-      color:  @sub-menu-color;
+      color: @sub-menu-color;
     }
 
     &.active>a, & .active {
@@ -91,7 +109,7 @@
         border-bottom: 9px solid transparent;
         position: absolute;
         right: 0;
-        margin-top: -10px;
+        margin-top: -9px;
         top: 50%;
       }
     }
