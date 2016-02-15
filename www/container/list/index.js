@@ -1,15 +1,17 @@
 /**
  * Created by egorov on 10.04.2015.
  */
-
 /**
  *
  * @param table DOM table element
  * @param pager
+ * @param sizeBlock
  * @param asyncCompleteHandler External handler after async table rendering
+ * @param custom_pager
+ * @param customResponse response for update table
  * @constructor
  */
-function templateList(table, pager, asyncCompleteHandler, custom_pager) {
+function templateList(table, pager, sizeBlock, asyncCompleteHandler, custom_pager, customResponse) {
 
     var completeHandler = asyncCompleteHandler !== undefined ? asyncCompleteHandler : false;
 
@@ -70,10 +72,12 @@ function templateList(table, pager, asyncCompleteHandler, custom_pager) {
             // TODO: Remove when material app will be updated
             if (serverResponse.table_html) table.html(serverResponse.table_html);
             if (serverResponse.table_pager) pager.html(serverResponse.table_pager);
+            if (serverResponse.table_sizeBlock) sizeBlock.html(serverResponse.collection_sizeBlock);
 
             // If we have collection html - update it
             if (serverResponse.collection_html) table.html(serverResponse.collection_html);
             if (serverResponse.collection_pager) pager.html(serverResponse.collection_pager);
+            if (serverResponse.collection_sizeBlock) sizeBlock.html(serverResponse.collection_sizeBlock);
             
             if (completeHandler) {
                 completeHandler(table, pager);
@@ -167,7 +171,6 @@ function templateList(table, pager, asyncCompleteHandler, custom_pager) {
         init(response);
     });
 
-
     // Table view switching
     var switchToTable = s('.icon2-table');
     var switchToBlocks = s('.icon2-th');
@@ -189,13 +192,30 @@ function templateList(table, pager, asyncCompleteHandler, custom_pager) {
     });
 
     // Init table
-    init();
+    init(customResponse);
 }
+
+
+// Check exits .table2
+if (s('.table2').length == 0) {
+    // if not exits DOM elements .table2 then hang keydown on DOM elements #search
+    s('input#search').keydown(function(obj, p, e){
+        // if key 'enter'
+        if (e.which == 13) {
+            // if input symbols quantity more than 2
+            if (obj.val().length > 2) {
+                // redirect to table with response
+                s(location).a('href', obj.a('url')+'0/'+obj.val());
+            }
+        }
+    });
+}
+
 
 // Bind list logic
 s('.table2').pageInit(function(table){
     if (!table.hasClass('custom-table2')) {
-        templateList(table, s('.table-pager'), function() {
+        templateList(table, s('.table-pager'), s('.sizeSelect'), function() {
             SamsonCMS_Input.update(s('body'));
         });
     }
