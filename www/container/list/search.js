@@ -3,10 +3,8 @@
  */
 
 /**
- * Created by Maxim Omelchenko on 02.02.2015 at 16:24.
- */
-
-
+ * Changed by myslyvyi 12.01.2016.
+ * */
 
 /**
  * Asynchronous material search
@@ -23,9 +21,11 @@ var sjsSearch = {
         // Stores current input
         var searchField = this;
         // Stores previous search string
-        var prevKeywords;
+        var prevKeywords = 0;
         // Limits search symbols
-        var symbolsNumber = searchFrom === undefined ? 2 : searchFrom;
+        var symbolsNumber = searchFrom === undefined ? 3 : searchFrom;
+        // Previous search response
+        var prevResponse = false;
 
         // If enter key was pressed ignore it
         searchField.keydown(function(obj, p, e){
@@ -40,10 +40,15 @@ var sjsSearch = {
             // Get search string
             var keywords = obj.val();
 
+            // If last response return empty and current symbols length > previous symbols length (with success response) then not update result
+            if (prevResponse && keywords.length >= prevKeywords.length) {
+                return false;
+            }
+
             // If we have not send any search request and search string differs from previous and there is enough letters
             if (
                 prevKeywords !== keywords &&
-                (keywords.length == 0 || keywords.length >= symbolsNumber)
+                (keywords.length < symbolsNumber || keywords.length >= symbolsNumber)
             ) {
 
                 // Reset timeout on key press
@@ -51,6 +56,15 @@ var sjsSearch = {
 
                 // Set delayed function
                 searchTimeout = window.setTimeout(function () {
+
+                    if (prevKeywords < symbolsNumber && keywords.length < symbolsNumber) {
+                        return false;
+                    }
+
+                    //Set keywords empty if keywords length < minimal length symbols
+                    if (keywords.length < symbolsNumber) {
+                        keywords = '';
+                    }
 
                     //Disable input
                     searchField.a('disabled', 'disabled');
@@ -73,8 +87,8 @@ var sjsSearch = {
                     // Perform async request to server for rendering table
                     s.ajax(url, function (response) {
 
-                        searchField.DOMElement.removeAttribute('disabled');
-                        searchField.DOMElement.focus();
+                        searchField.a('disabled', '');
+                        searchField.focus();
 
                         // Store current search string as previous
                         prevKeywords = keywords;
@@ -82,6 +96,17 @@ var sjsSearch = {
                         // Call external handler
                         if (afterHandler) {
                             afterHandler(response);
+                        }
+
+                        var resp = JSON.parse(response);
+
+                        // Check response by empty
+                        if (resp["collection_html"].indexOf('notfound') == -1) {
+                            //Write status last response
+                            prevResponse = false;
+                        } else {
+                            //Write status last response
+                            prevResponse = true;
                         }
                     });
                 }, 1000);
