@@ -78,13 +78,15 @@ function templateList(table, pager, sizeBlock, asyncCompleteHandler, custom_page
             if (serverResponse.collection_html) table.html(serverResponse.collection_html);
             if (serverResponse.collection_pager) pager.html(serverResponse.collection_pager);
             if (serverResponse.collection_sizeBlock) sizeBlock.html(serverResponse.collection_sizeBlock);
+            
+            if (completeHandler) {
+                completeHandler(table, pager);
+            }
         } catch (e) {
 
         }
 
-        if (completeHandler) {
-            completeHandler(table, pager);
-        }
+        
 
         // If we have successful event response or no response at all(first init)
         if (!serverResponse || (serverResponse && serverResponse.status)) {
