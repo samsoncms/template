@@ -63,7 +63,7 @@ class Template extends CompressableExternalModule
         // Prepare view
         $this->view('container')
             ->title(t('Главная', true))
-            ->set('template-container', $html);
+            ->set($html, 'template-container');
     }
 
     /** #template-menu rendering controller action */
@@ -74,26 +74,26 @@ class Template extends CompressableExternalModule
         $submenu = '';
 
         $html .= $this->view('menu/item')
-                ->set('icon', 'home')
-                ->set('name', t('Главная', true))
-                ->set('class', 'homeLink')
-                ->set('active', url()->module == '' ? 'active' : '')
+                ->set('home', 'icon')
+                ->set(t('Главная', true), 'name')
+                ->set('homeLink', 'class')
+                ->set(url()->module == '' ? 'active' : '', 'active')
                 ->output();
 
         $html .= $this->view('menu/item')
-            ->set('icon', 'globe')
-            ->set('id', '../')
-            ->set('name', t('На сайт', true))
-            ->set('target', '_blank')
+            ->set('globe', 'icon')
+            ->set('../', 'id')
+            ->set(t('На сайт', true), 'name')
+            ->set('_blank', 'target')
             ->output();
 
         Event::fire('template.menu.started', array(&$html, &$submenu));
 
         $html .= $this->view('menu/item')
-            ->set('icon', 'sign-out')
-            ->set('class', 'sign-out')
-            ->set('id', 'signin/logout')
-            ->set('name', t('Выход', true))
+            ->set('sign-out', 'icon')
+            ->set('sign-out', 'class')
+            ->set('signin/logout', 'id')
+            ->set(t('Выход', true), 'name')
             ->output();
 
         Event::fire('template.menu.rendered', array(&$html, &$submenu));
@@ -101,11 +101,11 @@ class Template extends CompressableExternalModule
         // Prepare view
         $this->view('menu/index')
             // TODO: Remove samson\core\Core dependency
-            ->set('module', url()->module)
-            ->set('logo', $this->menuLogo)
+            ->set(url()->module, 'module')
+            ->set($this->menuLogo, 'logo')
 
-            ->set('template-menu', $html)
-            ->set('submenu', $submenu);
+            ->set($html, 'template-menu')
+            ->set($submenu, 'submenu');
     }
 
     /** E404 controller action */
@@ -122,7 +122,7 @@ class Template extends CompressableExternalModule
         // Render template e404 into local module
         m('local')->html(
             $this->view('e404')
-            ->set('template-container', $html)
+            ->set($html, 'template-container')
             ->output()
         )->title(t('Страница не найдена', true));
 
