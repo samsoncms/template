@@ -6,11 +6,10 @@
   bottom:0px;
   width: @sub-menu-width;
   z-index:2;
-  padding: @padding 0 @padding 0;
+  padding: 1.5*@padding 0 @padding 0;
 
-  .transition(left, @animation-duration);
-  .transition(width, @animation-duration);
-
+  .transition(all, @animation-duration);
+  
   & + #template-container, & + .template-container {
     left:@menu-collapsed-width + @sub-menu-width;
   }
@@ -78,7 +77,7 @@
       .opacity(0.7);
 
       &:before { content:"\f100";}
-      &:hover {.opacity(0.8);}
+      &:hover {.opacity(1);}
     }
 
     &.template-sub-menu-search {
