@@ -7,8 +7,46 @@
   width: @menu-collapsed-width;
   z-index: 3;
 
+  .transition(width, @animation-duration);
+
+  // small big menu
+  &.minimized {
+    width: 50px;
+    overflow: hidden;
+
+    // smaller right block
+    & + #template-container, & + .template-container {
+      left: 50px;
+    }
+
+    // smaller left space
+    & + .template-sub-menu {
+      left: 50px;
+
+      // smaller right block
+      & + #template-container, & + .template-container {
+        left: 50 + @sub-menu-width;
+      }
+
+      &.collapsed {
+        & + #template-container, & + .template-container {
+          left: 50 + @sub-menu-collapsed-width;
+        }
+      }
+    }
+
+    .template-menu-list {
+      .text {
+        .item {
+          span {
+          }
+        }
+      }
+    }
+  }
+
   .template-menu-list {
-    text-align: center;
+    text-align: left;
     position: relative;
     z-index: 4;
     height: 100%;
@@ -17,11 +55,16 @@
     padding-top: @padding;
 
     .text, .arrow {
-      margin-bottom: @padding;
+      &.arrow-bottom, &.arrow-top {
+        a {
+          width: 100%;
+        }
+      }
 
+      margin-bottom: 0.75*@padding;
       .opacity(0.5);
 
-      &:hover{
+      &:hover {
         opacity: 1;
         -webkit-transition: opacity .30s ease-in-out;
         -moz-transition: opacity .30s ease-in-out;
@@ -34,7 +77,7 @@
         opacity: 1;
         position: relative;
 
-        &:before{
+        &:before {
           content: '';
           border-top: 9px solid transparent;
           border-right: 8px solid #6b7f9b;
@@ -45,25 +88,27 @@
           top: 50%;
         }
 
-        &.homeLink{
-          &:before{
+        &.homeLink {
+          &:before {
             border-right: 8px solid #e4e8ed;
           }
         }
-        &.collapsedActive{
-          &:before{
+        &.collapsedActive {
+          &:before {
             display: none;
           }
         }
 
         i {
-          text-shadow: 0px 0px 12px rgba(0,0,255, 0.5);
-          cursor:default;
+          text-shadow: 0px 0px 12px rgba(0, 0, 255, 0.5);
+          cursor: default;
         }
       }
 
       &:hover, &.hover {
-        a {  color:#fff;  }
+        a {
+          color: #fff;
+        }
       }
 
       &.sign-out {
@@ -74,16 +119,22 @@
 
       .item {
         color: @menu-color;
-        display: block;
+        display: table;
+        height: 30px;
 
         i {
+          text-align: center;
+          display: table-cell;
           font-size: @menu-icon-fontsize;
-          min-width: 1.5*@padding;
+          min-width: 2.5*@padding;
           vertical-align: middle;
         }
 
         span {
-          display: block;
+          opacity: 1;
+          min-width: 4.5*@padding;
+          text-align: left;
+          display: table-cell;
           font-size: @menu-text-size;
           vertical-align: middle;
         }
