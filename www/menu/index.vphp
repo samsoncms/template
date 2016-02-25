@@ -1,4 +1,4 @@
-<section class="template-menu <?php isv('submenu', 'has-sub-menu')?>">
+<section class="template-menu minimized <?php isv('submenu', 'has-sub-menu')?>">
         <ul class="template-menu-list">
             <li class="arrow arrow-top" style="display: none;">
                 <a class="item">
