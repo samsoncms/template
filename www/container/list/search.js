@@ -63,7 +63,7 @@ var sjsSearch = {
 
                     //Set keywords empty if keywords length < minimal length symbols
                     if (keywords.length < symbolsNumber) {
-                        keywords = '';
+                        keywords = '0';
                     }
 
                     //Disable input
