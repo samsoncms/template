@@ -31,3 +31,18 @@ s('.template-menu').pageInit(function (menu) {
         templateMenuSliderInit(s('.template-menu-list'));
     });
 });
+
+s('body').pageInit(function(){
+    tilesInit();
+    window.onresize = function(event) {
+        tilesInit();
+    };
+});
+
+var tilesInit = function() {
+    if (window.innerWidth < 768) {
+        s('.table2').addClass('mobile-version');
+    } else {
+        s('.table2').removeClass('mobile-version');
+    }
+};
