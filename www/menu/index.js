@@ -17,6 +17,13 @@ s('.template-menu').pageInit(function (menu) {
         bigMenu.addClass('minimized');
     });
 
+    // Mobile menu
+    s('#mobile-menu-button').click(function(btn){
+        btn.toggleClass('open');
+        s('.template-menu').toggleClass('open');
+        s('body').toggleClass('mobile-open');
+    });
+
     bigMenu.mouseenter(function () {
         bigMenu.removeClass('minimized');
 
