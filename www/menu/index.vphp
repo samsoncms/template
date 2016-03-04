@@ -1,4 +1,10 @@
 <section class="template-menu minimized <?php isv('submenu', 'has-sub-menu')?>">
+    <div id="mobile-menu-button">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
         <ul class="template-menu-list">
             <li class="arrow arrow-top" style="display: none;">
                 <a class="item">
