@@ -39,6 +39,14 @@ s('body').pageInit(function(){
     };
 });
 
+s('#content').pageInit(function(elem){
+    var table = s('.table2', elem);
+    if (elem.width() < table.width()) {
+        table.removeClass('default');
+        table.addClass('tiles');
+    }
+});
+
 var tilesInit = function() {
     if (window.innerWidth < 768) {
         s('.table2').addClass('mobile-version');
