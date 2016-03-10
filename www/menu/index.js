@@ -41,11 +41,11 @@ s('body').pageInit(function(){
 
 var initContentWidth = function() {
     var elem = s('#content');
-    var table = s('.table2', elem);
-    if (elem.width() < table.width()) {
+    var table = s('.table2');
+    if (elem.width() < table.elements[table.elements.length-1].width()) {
         s('.table-switcher').hide();
-        table.removeClass('default');
-        table.addClass('tiles');
+        table.elements[table.elements.length-1].removeClass('default');
+        table.elements[table.elements.length-1].addClass('tiles');
     }
 };
 
