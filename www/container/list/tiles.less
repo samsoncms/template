@@ -8,23 +8,104 @@
     }
 
     .table2-row {
+      position: relative;
       display: inline-block;
+      padding-bottom: 16px;
       margin: @padding @padding 0 0;
-      width: 18.5%;
+      width: 31.5%;
       min-width: 10*@padding;
       border: 1px solid @table2-border-color;
       vertical-align: top;
+      background-color: #fff !important;
+
+      &.not-published{
+        opacity: 0.6;
+      }
+
+      &:nth-child(3n) {
+        margin-right: 0;
+      }
+
+      &:hover{
+        .table2-col{
+          background: none;
+        }
+      }
 
       &:last-child {
         margin-right: 0;
       }
 
       .table2-col {
+        line-height: 20px;
         display: block;
         font-size: 0.9em;
         min-height:@padding;
         border:none;
         width: 100%;
+
+        &:first-child{
+          margin-top: 30px;
+        }
+
+        > .label {
+          display: block;
+          position: relative;
+          margin: 4px 0 6px;
+          &:before{
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 100%;
+            height: 1px;
+            border-bottom: 1px solid #ccc;
+          }
+
+          span{
+            display: inline-block;
+            position: relative;
+            left: 15px;
+            padding: 0 8px;
+            background-color: #fff;
+          }
+
+        }
+
+        &.publish{
+          .label{
+            display: none;
+          }
+          position: absolute;
+          top: 4px;
+          left: 0;
+          width: auto;
+        }
+
+        &.control{
+          .label{
+            display: none;
+          }
+          position: absolute;
+          top: 4px;
+          right: 0;
+          width: auto;
+        }
+
+        .__fieldUpload .__file_name{
+          float: none;
+        }
+
+        .__field_upload_image{
+          height: 70px !important;
+          display: table;
+          img{
+            max-height: 70px;
+            display: table-cell !important;
+            vertical-align: middle;
+          }
+        }
+        
       }
 
       &.table2-header-row {

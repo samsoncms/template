@@ -90,6 +90,18 @@
     overflow: hidden;
   }
 
+  #content{
+    top: 7*@padding;
+  }
+
+  .table-switcher{
+    display: none !important;
+  }
+
+  .pager-size-block{
+    display: none;
+  }
+
   .template-menu-list{
     display: none;
   }
@@ -188,4 +200,47 @@
     display: block;
   }
 
+}
+
+@media screen and (max-width: 1170px) {
+  .table2.tiles{
+    .table2-row{
+      width: 48%;
+      margin-right: 2% !important;
+      &:nth-child(2n){
+        margin-right: 0 !important;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 970px) {
+  .table2.tiles{
+    .table2-row{
+      width: 100%;
+      margin-right: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) and (min-width: 601px) {
+  .table2.mobile-version{
+    .table2-row{
+      width: 48% !important;
+      margin-right: 2% !important;
+      &:nth-child(2n){
+        margin-right: 0 !important;
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 600px) {
+  .table2.mobile-version{
+    .table2-row{
+      width: 100%;
+      margin-right: 0;
+    }
+  }
 }

@@ -132,6 +132,7 @@ function templateList(table, pager, sizeBlock, asyncCompleteHandler, custom_page
                     obj.ajaxClick(function(response) {
                         loader.hide();
                         init(response);
+                        tilesInit();
                     }, function(){
                         // Create generic loader
                         var loader = new Loader(table);

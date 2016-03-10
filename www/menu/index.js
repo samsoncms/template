@@ -39,20 +39,21 @@ s('body').pageInit(function(){
     };
 });
 
-s('#content').pageInit(function(elem){
+var initContentWidth = function() {
+    var elem = s('#content');
     var table = s('.table2', elem);
     if (elem.width() < table.width()) {
-        s('.table-switcher .icon2-table').show();
-        s('.table-switcher .icon2-th').hide();
+        s('.table-switcher').hide();
         table.removeClass('default');
         table.addClass('tiles');
     }
-});
+};
 
 var tilesInit = function() {
     if (window.innerWidth < 768) {
         s('.table2').addClass('mobile-version');
     } else {
         s('.table2').removeClass('mobile-version');
+        initContentWidth();
     }
 };
