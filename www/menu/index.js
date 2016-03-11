@@ -30,6 +30,11 @@ s('.template-menu').pageInit(function (menu) {
         s('.text').css('display', 'block');
         templateMenuSliderInit(s('.template-menu-list'));
     });
+    
+    // if there is no submenu add class for current active item
+    if (s('.template-sub-menu').length == 0) {
+        s('.active', menu).addClass('active-without-submenu');
+    }
 });
 
 s('body').pageInit(function(){
