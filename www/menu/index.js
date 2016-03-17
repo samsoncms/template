@@ -55,10 +55,13 @@ var initContentWidth = function() {
 };
 
 var tilesInit = function() {
+    var table = s('.table2');
     if (window.innerWidth < 768) {
-        s('.table2').addClass('mobile-version');
+        table.addClass('mobile-version');
     } else {
-        s('.table2').removeClass('mobile-version');
-        initContentWidth();
+        table.removeClass('mobile-version');
+        if(table.elements !== null) {
+            initContentWidth();
+        }
     }
 };
