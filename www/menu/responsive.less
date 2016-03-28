@@ -20,11 +20,11 @@
 
     display: block;
     position: absolute;
-    height: 9px;
-    width: 80%;
+    height: 4px;
+    width: 60%;
     background: #fff;
     opacity: 1;
-    left: 10%;
+    left: 18%;
     //-webkit-transform: rotate(0deg);
     //-moz-transform: rotate(0deg);
     //-o-transform: rotate(0deg);
@@ -35,24 +35,24 @@
     transition: .25s ease-in-out;
 
     &:nth-child(1) {
-      top: 7px;
+      top: 17px;
     }
 
     &:nth-child(2), &:nth-child(3) {
-      top: 25px;
+      top: 27px;
     }
 
     &:nth-child(4) {
-      top: 43px;
+      top: 37px;
     }
   }
 
   &.open{
 
-    background: white;
+    background: @theme-color;
 
     span{
-      background: @theme-color;
+      background: #fff;
       &:nth-child(1) {
         top: 18px;
         width: 0;
@@ -88,6 +88,10 @@
   /** Menu **/
   body.mobile-open{
     overflow: hidden;
+
+    .template-form-input{
+      display: none;
+    }
   }
 
   #content{
@@ -109,6 +113,17 @@
   .template-container, #template-container{
     padding-top: 80px;
     left: 0 !important;
+    top: 30px !important;
+
+    .template-form-input-group.activeButton{
+      position: fixed;
+      right: 10px;
+      top: 17px;
+      z-index: 8;
+      .onoffswitch-switch{
+        background-color: #fff;
+      }
+    }
   }
 
   .template-menu{
@@ -198,6 +213,16 @@
 
   #mobile-menu-button{
     display: block;
+  }
+
+  .template-form-input-group.select-structure-wrapper{
+    ._sjsselect_parent{
+      width: 100% !important;
+    }
+  }
+
+  .__inputfield{
+    min-height: 60px !important;
   }
 
 }
