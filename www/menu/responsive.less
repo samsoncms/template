@@ -134,39 +134,59 @@
     width: 100% !important;
     .transition(all, 0.3s);
     max-height: 60px;
+
     &.open {
       height: 100% !important;
       overflow: auto !important;
       max-height: 2000px;
+
       .template-menu-list {
         display: block;
         height: auto !important;
         padding-bottom: 80px;
+
+        .i18n-current{
+          font-size: 20px;
+        }
+
         li{
           display: block !important;
           margin-bottom: 0;
+
           &.arrow.arrow-top, &.arrow.arrow-bottom{
             display: none !important;
           }
+
           &.active:before{
             display: none;
           }
+
           span, i{
             font-size: 24px !important;
             line-height: 60px !important;
             padding-left: 8px;
           }
+
           &.i18n {
             position: absolute;
-            top: 0;
-            width: 100%;
+            top: -44px;
+            right: 70px;
+            width: auto;
+            .transition(all, 0.3s);
             .i18n-list li a {
               font-size: 20px;
             }
+            &.mobile-sub-open{
+              right: 220px;
+            }
           }
+
         }
+
       }
+
     }
+
   }
 
   .template-sub-menu{
