@@ -31,6 +31,11 @@ s('.template-menu').pageInit(function (menu) {
         s('.text').css('display', 'block');
         templateMenuSliderInit(s('.template-menu-list'));
     });
+
+    // if there is no submenu add class for current active item
+    if (s('.template-sub-menu').length == 0) {
+        s('.active', menu).addClass('active-without-submenu');
+    }
 });
 
 s('body').pageInit(function(){
@@ -51,11 +56,14 @@ var initContentWidth = function() {
 };
 
 var tilesInit = function() {
+    var table = s('.table2');
     if (window.innerWidth < 768) {
         s('.table2').addClass('mobile-version');
         s('.template-sub-menu').addClass('collapsed');
     } else {
-        s('.table2').removeClass('mobile-version');
-        initContentWidth();
+        table.removeClass('mobile-version');
+        if(table.elements !== null) {
+            initContentWidth();
+        }
     }
 };
