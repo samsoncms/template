@@ -9,6 +9,7 @@
         }
     ],
     "require": {
+        "samsonphp/less": "*",
         "samsonos/php_core": "*",
         "samsonos/php_i18n": "*",
         "samsonos/js_core": "*"
