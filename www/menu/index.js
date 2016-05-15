@@ -4,6 +4,7 @@
 s('.template-menu').pageInit(function (menu) {
     var collapse2 = s('.collapser').click(function (clicked) {
         s('.template-sub-menu').toggleClass('collapsed');
+        s('.i18n').toggleClass('mobile-sub-open');
     });
 
     // added animation to left (big) menu
@@ -30,7 +31,7 @@ s('.template-menu').pageInit(function (menu) {
         s('.text').css('display', 'block');
         templateMenuSliderInit(s('.template-menu-list'));
     });
-    
+
     // if there is no submenu add class for current active item
     if (s('.template-sub-menu').length == 0) {
         s('.active', menu).addClass('active-without-submenu');
@@ -47,17 +48,18 @@ s('body').pageInit(function(){
 var initContentWidth = function() {
     var elem = s('#content');
     var table = s('.table2');
-    if (elem.width() < table.elements[table.elements.length-1].width()) {
+    if (table.elements != null && elem.width() < table.elements[table.elements.length-1].width()) {
         s('.table-switcher').hide();
-        table.elements[table.elements.length-1].removeClass('default');
-        table.elements[table.elements.length-1].addClass('tiles');
+        table.elements[table.elements.length - 1].removeClass('default');
+        table.elements[table.elements.length - 1].addClass('tiles');
     }
 };
 
 var tilesInit = function() {
     var table = s('.table2');
     if (window.innerWidth < 768) {
-        table.addClass('mobile-version');
+        s('.table2').addClass('mobile-version');
+        s('.template-sub-menu').addClass('collapsed');
     } else {
         table.removeClass('mobile-version');
         if(table.elements !== null) {
