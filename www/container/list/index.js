@@ -235,7 +235,7 @@ var updateAddressBar = function() {
     var currentStructure = s('#navigationId').val();
 
     // Default url (if standard output)
-    var url = currentPage[1] + '/' + currentPage[2] + '/collection/' + currentStructure + '/' + search + '/' + clickedPage;
+    var url = currentPage[1] + '/' + currentPage[2] + '/' + clickedPage;
 
     // If collection is table from database (not have structure id)
     if (currentStructure === '') {
