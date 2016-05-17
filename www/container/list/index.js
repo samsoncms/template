@@ -233,11 +233,19 @@ var updateAddressBar = function() {
     var currentPage = (window.location.pathname).split('/');
     // Current structure id
     var currentStructure = s('#navigationId').val();
-    
+
+    // Default url (if standard output)
+    var url = currentPage[1] + '/' + currentPage[2] + '/collection/' + currentStructure + '/' + search + '/' + clickedPage;
+
+    // If collection is table from database (not have structure id)
+    if (currentStructure === '') {
+        clickedPage = s('.__samson_pager_li.active').text();
+        url = currentPage[1] + '/' + currentPage[2] + '/collection/' + clickedPage;
+    }
+
     // Info which need added to location
     var state = {'page': clickedPage};
     var title = currentPage;
-    var url = currentPage[1] + '/' + currentPage[2] + '/collection/' + currentStructure + '/' + search + '/' + clickedPage;
     history.pushState(state, title, url);
 };
 
