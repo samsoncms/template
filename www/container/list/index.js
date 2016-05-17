@@ -56,37 +56,44 @@ function templateList(table, pager, sizeBlock, asyncCompleteHandler, custom_page
 
     function init(serverResponse) {
         // If we have response from server
-        if (serverResponse) try {
-            // Parse JSON response
-            serverResponse = JSON.parse(serverResponse);
-            
-            if (serverResponse.error_message) {
-                alert(serverResponse.error_message);
-            }
-        } catch (e) {
-
-        }
-
         try {
+            if (serverResponse) {
+                // Parse JSON only if this is not an object
+                if (typeof(serverResponse) !== "object") {
+                    // Parse JSON response
+                    serverResponse = JSON.parse(serverResponse);
+                }
 
-            // TODO: Remove when material app will be updated
-            if (serverResponse.table_html) table.html(serverResponse.table_html);
-            if (serverResponse.table_pager) pager.html(serverResponse.table_pager);
-            if (serverResponse.table_sizeBlock) sizeBlock.html(serverResponse.collection_sizeBlock);
+                if (serverResponse.error_message) {
+                    alert(serverResponse.error_message);
+                }
 
-            // If we have collection html - update it
-            if (serverResponse.collection_html) table.html(serverResponse.collection_html);
-            if (serverResponse.collection_pager) pager.html(serverResponse.collection_pager);
-            if (serverResponse.collection_sizeBlock) sizeBlock.html(serverResponse.collection_sizeBlock);
-            
-            if (completeHandler) {
-                completeHandler(table, pager);
+                // TODO: Remove when material app will be updated
+                if (serverResponse.table_html) table.html(serverResponse.table_html);
+                // if (serverResponse.table_pager) pager.html(serverResponse.table_pager);
+                if (serverResponse.table_sizeBlock) sizeBlock.html(serverResponse.collection_sizeBlock);
+
+                // If we have collection html - update it
+                if (serverResponse.collection_html) table.html(serverResponse.collection_html);
+                if (serverResponse.collection_pager) pager.html(serverResponse.collection_pager);
+                if (serverResponse.collection_sizeBlock) sizeBlock.html(serverResponse.collection_sizeBlock);
+
+                // Info about current page
+                if (serverResponse.pageNumber) s('#pageNumber').val(serverResponse.pageNumber);
+                if (serverResponse.searchQuery) s('#searchQuery').val(serverResponse.searchQuery);
+
+                // Update address Bar
+                updateAddressBar();
+
+                if (completeHandler) {
+                    completeHandler(table, pager);
+                }
             }
         } catch (e) {
-
+            console.log('Malformed JSON response: ' + e.toString());
+            // Work as first init
+            serverResponse = false;
         }
-
-        
 
         // If we have successful event response or no response at all(first init)
         if (!serverResponse || (serverResponse && serverResponse.status)) {
@@ -212,6 +219,25 @@ if (s('.table2').length == 0) {
     });
 }
 
+/**
+ * Function which updated address bar
+ */
+var updateAddressBar = function() {
+    // This block added to location info about current page
+    var search = s('#searchQuery').val();
+    if (search === '') search = '0';
+
+    // Clicked page
+    var clickedPage = s('#pageNumber').val();
+    // Current page
+    var currentPage = (window.location.pathname).split('/');
+
+    // Info which need added to location
+    var state = {'page': clickedPage};
+    var title = currentPage;
+    var url = currentPage[1] + '/' + currentPage[2] + '/collection/' + 13 + '/' + search + '/' + clickedPage;
+    history.pushState(state, title, url);
+};
 
 // Bind list logic
 s('.table2').pageInit(function(table){
