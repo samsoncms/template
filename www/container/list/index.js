@@ -231,11 +231,13 @@ var updateAddressBar = function() {
     var clickedPage = s('#pageNumber').val();
     // Current page
     var currentPage = (window.location.pathname).split('/');
-
+    // Current structure id
+    var currentStructure = s('#navigationId').val();
+    
     // Info which need added to location
     var state = {'page': clickedPage};
     var title = currentPage;
-    var url = currentPage[1] + '/' + currentPage[2] + '/collection/' + 13 + '/' + search + '/' + clickedPage;
+    var url = currentPage[1] + '/' + currentPage[2] + '/collection/' + currentStructure + '/' + search + '/' + clickedPage;
     history.pushState(state, title, url);
 };
 
