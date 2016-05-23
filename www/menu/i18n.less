@@ -1,57 +1,103 @@
-.i18n-current {
-  display: block !important;
-  font-size: 13px;
-  color: white;
-  text-transform: uppercase;
-  text-align: center;
-  cursor: pointer;
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Chrome/Safari/Opera */
-  -khtml-user-select: none; /* Konqueror */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE/Edge */
-  user-select: none;
-  /* non-prefixed version, currently
-                         not supported by any browser */
-  &.open + .i18n-list {
-    display: block;
+.samsoncms {
+  .i18n-current {
+    display: block !important;
+    font-size: 13px;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -khtml-user-select: none; /* Konqueror */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE/Edge */
+    user-select: none;
+    /* non-prefixed version, currently
+                           not supported by any browser */
+    &.open + .i18n-list {
+      display: block;
+    }
   }
-
 }
 
-.i18n-list {/* Locale block parent */
-  display: none;
+// View for cms
+.samsoncms {
+  .i18n-list { /* Locale block parent */
+    display: none;
+    margin-top: 6px;
+
+    li { /* Locale block container */
+      display: block;
+      margin-bottom: 2px;
+
+      a { /* Locale link for clicking */
+        &:after {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+// View for site
+.i18n-list { /* Locale block parent */
+  display: block;
   vertical-align: middle;
   text-align: center;
-  margin-top: 6px;
 
-  li {/* Locale block container */
-    display: block;
-    margin-bottom: 2px;
+  li { /* Locale block container */
+    display: inline-block;
 
     a { /* Locale link for clicking */
       display: inline-block;
       background-repeat: no-repeat;
       background-position: 50% 50%;
-      font-size:13px;
-      color:white;
+      font-size: 13px;
+      color: white;
       cursor: pointer;
       .opacity(0.4);
 
       /* Locale inner text block */
-      &:before { display:inline-block;  }
-      &:hover { .opacity(0.75); }
+      &:before {
+        display: inline-block;
+      }
+
+      &:after {
+        display: inline-block;
+        content: "|";
+        margin: 0 @menu-fixer;
+      }
+
+      &:hover {
+        .opacity(0.75);
+      }
     }
 
     /** Current active locale class */
-    &.i18n-active a { cursor: default; .opacity(1);  &:hover { .opacity(1); } }
+    &.i18n-active a {
+      cursor: default;
+      .opacity(1);
+      &:hover {
+        .opacity(1);
+      }
+    }
 
-    &:last-child a:after{display: none;}
+    &:last-child a:after {
+      display: none;
+    }
 
     /** Default locale inner text block class */
-    &.i18n-locale-ru a:before { content:"RU"; }
-    &.i18n-locale-en a:before { content:"EN"; }
-    &.i18n-locale-ua a:before {  content:"UA"; }
-    &.i18n-locale-de a:before {  content:"DE"; }
+    &.i18n-locale-ru a:before {
+      content: "RU";
+    }
+    &.i18n-locale-en a:before {
+      content: "EN";
+    }
+    &.i18n-locale-ua a:before {
+      content: "UA";
+    }
+    &.i18n-locale-de a:before {
+      content: "DE";
+    }
   }
 }
