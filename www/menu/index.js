@@ -59,8 +59,10 @@ s('body').pageInit(function () {
 var initContentWidth = function () {
     var elem = s('#content');
     var table = s('.table2');
+    var tableSwitcher = s('.table-switcher');
     if (table.elements != null && elem.width() < table.elements[table.elements.length - 1].width()) {
-        s('.table-switcher').hide();
+        s('.icon2-th', tableSwitcher).hide();
+        s('.icon2-table', tableSwitcher).show();
         table.elements[table.elements.length - 1].removeClass('default');
         table.elements[table.elements.length - 1].addClass('tiles');
     }
