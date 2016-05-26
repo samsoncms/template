@@ -249,12 +249,12 @@ var updateAddressBar = function() {
     var currentStructure = s('#navigationId').val();
 
     // Default url (if standard output)
-    var url = currentPage[1] + '/' + currentPage[2] + '/' + clickedPage;
+    var url = currentPage[1] + '/' + currentPage[2] + '/collection/' + currentStructure + '/' + search + '/' + clickedPage;
 
     // If collection is table from database (not have structure id)
     if (currentStructure === '') {
         clickedPage = s('.__samson_pager_li.active').text();
-        url = currentPage[1] + '/' + currentPage[2] + '/collection/' + clickedPage;
+        url = currentPage[1] + '/' + currentPage[2] + '/' + clickedPage;
     }
 
     // Info which need added to location
