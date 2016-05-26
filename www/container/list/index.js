@@ -35,18 +35,32 @@ function templateList(table, pager, sizeBlock, asyncCompleteHandler, custom_page
 
     /** Event: Remove material */
     function remove(obj) {
-        if (confirm(obj.a('title'))) {
+        // TODO Rewrite this block to template view
+        var div = '<div class="confirm"><div class="confirm-wrapper"><div class="inner-confirm">'+obj.a("title")+'<div class="confirm-button icon-delete">Yes</div><div class="close icon2 icon_16x16 fa-times"></div></div></div></div>';
+        s('html').append(div);
+
+        // Show info
+        var tb = tinybox(s('.confirm'), true);
+        tb.show();
+
+        // Close info-popup
+        s('.confirm .close').click(function() {
+            tb.hide();
+        });
+
+        s('.confirm-button').click(function() {
             s.ajax(obj.a('href'), init, FormData, function() {
                 loader.hide();
             }, function() {
                 // Create generic loader
                 var loader = new Loader(table);
-
                 // Show loader with i18n text and black bg
                 loader.show('', true);
+                // Close div - confirm
+                tb.hide();
                 return true;
             });
-        }
+        });
     }
 
     /** Event: Copy material */
