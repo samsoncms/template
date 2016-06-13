@@ -243,24 +243,44 @@ var updateAddressBar = function() {
 
     // Clicked page
     var clickedPage = s('#pageNumber').val();
-    // Current page
-    var currentPage = (window.location.pathname).split('/');
     // Current structure id
     var currentStructure = s('#navigationId').val();
 
+    // Create correct link
+    createCorrectLink(currentStructure, clickedPage, search);
+};
+
+var createCorrectLink = function(currentStructure, clickedPage, search) {
+    // Current page
+    var currentPage = window.location.pathname;
+    var index = currentPage.indexOf('collection');
+
+    // Search number if collection not found
+    if (index < 0) {
+        var searchNumber = currentPage.match(/\d/g);
+        if (searchNumber !== null) {
+            searchNumber = searchNumber.join("");
+            index = currentPage.indexOf(searchNumber[0]);
+        }
+    }
+
+    // Return correct current path
+    if (index >= 0) {
+        currentPage = currentPage.slice(0, index);
+    }
+
     // Default url (if standard output)
-    var url = currentPage[1] + '/' + currentPage[2] + '/collection/' + currentStructure + '/' + search + '/' + clickedPage;
+    var url = currentPage + 'collection/' + currentStructure + '/' + search + '/' + clickedPage;
 
     // If collection is table from database (not have structure id)
     if (currentStructure === '') {
         clickedPage = s('.__samson_pager_li.active').text();
-        url = currentPage[1] + '/' + currentPage[2] + '/' + clickedPage;
+        url = currentPage + clickedPage;
     }
 
     // Info which need added to location
     var state = {'page': clickedPage};
-    var title = currentPage;
-    history.pushState(state, title, url);
+    history.pushState(state, currentPage, url);
 };
 
 // Bind list logic
