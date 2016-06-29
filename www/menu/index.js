@@ -87,9 +87,12 @@ var tilesInit = function () {
  * @param windowWidth - window size with open sub-menu
  */
 var automaticHiddenSubMenu = function (subMenuBlock, windowWidth) {
-    // After window resize
+     // After window resize
     s(window).resize(function () {
         if (innerWidth < windowWidth && !subMenuBlock.hasClass('collapsed')) {
+            subMenuBlock.toggleClass('collapsed');
+        }
+        else if (innerWidth > windowWidth && subMenuBlock.hasClass('collapsed')) {
             subMenuBlock.toggleClass('collapsed');
         }
     });
