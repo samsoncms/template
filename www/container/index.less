@@ -1,12 +1,23 @@
 #template-container, .template-container {
   position: absolute;
-  left:@menu-collapsed-width;
-  top:0px;
-  right:0px;
+  left: @menu-collapsed-width;
+  top: 0;
+  right: 0;
   padding: @padding;
   background-color: @container-bg;
 
   .transition(left, @animation-duration);
 
-  &.collapsed { left:@menu-full-width; }
+  &.collapsed {
+    left: @menu-full-width;
+  }
+}
+
+.clearfix {
+  .template-form-input-group + h1 {
+    padding-top: @padding/2;
+  }
+  .activeButton {
+    padding-top: @padding/2;
+  }
 }
