@@ -1,16 +1,16 @@
 /**
  * Created by onysko on 22.04.2015.
  */
-
-var topArrow = s('.arrow-top ', list);
-var bottomArrow = s('.arrow-bottom ', list);
-
 var nextPointer, currentPointer, itemsCount = 0;
+var topArrow, bottomArrow;
 
 // List items collection
 var items = [];
 
 var templateMenuSliderInit = function (list) {
+    topArrow = s('.arrow-top ', list);
+    bottomArrow = s('.arrow-bottom ', list);
+
     // Show top arrow
     topArrow.show();
 
@@ -91,21 +91,7 @@ var templateMenuSliderInit = function (list) {
 
 };
 
-s('.template-menu-list').pageInit(function(menuList) {
-    templateMenuSliderInit(menuList);
-    animateMenu();
-});
-
-s(window).resize(function(){
-    for (var i = 0; i < itemsCount; i++) {
-        items[i].show();
-    }
-
-    templateMenuSliderInit(s('.template-menu-list'));
-});
-
 animateMenu = function(){
-
     var mouseOverArrow = false, mouseClickArrow = false;
 
     // Time delay
@@ -200,3 +186,16 @@ animateMenu = function(){
         mouseOverArrow = false;
     });
 };
+
+s('.template-menu-list').pageInit(function(menuList) {
+    templateMenuSliderInit(menuList);
+    animateMenu();
+});
+
+s(window).resize(function(){
+    for (var i = 0; i < itemsCount; i++) {
+        items[i].show();
+    }
+
+    templateMenuSliderInit(s('.template-menu-list'));
+});
