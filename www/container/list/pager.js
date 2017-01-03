@@ -1,7 +1,7 @@
 /** Pager initing routine */
 var Pager = function()
-{	
-	// Pointer 
+{
+	// Pointer
 	var o = this;	
 	
 	/** Pager initialization */
@@ -16,8 +16,11 @@ var Pager = function()
 	
 	/** Pager initialization */
 	this.init = function()
-	{			
-		// Show loader with text
+	{
+
+        console.log('pager init');
+
+        // Show loader with text
 		var loader = new Loader( s('.__samsoncms_table') );		
 		
 		// Perform pager external init handlers
@@ -28,7 +31,7 @@ var Pager = function()
 		
 		// Page swith event
 		s('.__samson_pager_li').click( function(li)
-		{			
+		{
 			// Get page
 			var page = parseInt(li.html());
 			page = isNaN( page ) ? -1 : page;		

@@ -15,10 +15,10 @@ function templateList(table, pager, sizeBlock, asyncCompleteHandler, custom_page
 
     var completeHandler = asyncCompleteHandler !== undefined ? asyncCompleteHandler : false;
 
-    /** Event: Publish/unpublish material */
     function publish(obj) {
-        // ������� �������������
         if (confirm(obj.a('title'))) {
+            // ������� �������������
+            /** Event: Publish/unpublish material */
             // Perform ajax request and update JS on success
             s.ajax(s('a.publish_href', obj.parent()).a('href'), init, FormData, function() {
                 loader.hide();
@@ -102,6 +102,8 @@ function templateList(table, pager, sizeBlock, asyncCompleteHandler, custom_page
                 if (completeHandler) {
                     completeHandler(table, pager);
                 }
+
+                document.dispatchEvent(new CustomEvent('template_list_updated', {el: table, pager: pager}))
             }
         } catch (e) {
             console.log('Malformed JSON response: ' + e.toString());
